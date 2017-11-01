@@ -1,0 +1,272 @@
+Assign 14 MongoDB_jdbc
+
+package mong_jdbc;
+import java.util.Scanner;
+import com.mongodb.*;
+
+
+public class Try1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String name,dept,post;
+		int salary,choice;
+
+		MongoClient mongoClient;	//to establish connection between mongodb and server
+		DB db;				//to get db
+		DBCollection col;		//to get and interact with collection
+		BasicDBObject doc,Qdoc,Rdoc;	//interaction with document;insert,update,retrieve
+		DBCursor dbc;			//for displaying
+
+		System.out.println("Hello MongoDB");
+		Scanner in=new Scanner(System.in);
+		try{
+			mongoClient=new MongoClient("localhost",27017);
+			db=mongoClient.getDB("Cities");
+			System.out.println("Get existing Collection");
+			col=db.getCollection("roll");
+			do
+			{
+				System.out.println("Enter choice :"+"\n1.Insert a document"
+			+"\n2.Show collection"+"\n3.Delete a document"+"\n4.Searchy a document"+"\n5.Exit");
+				choice=in.nextInt();
+				switch(choice)
+				{
+				case 1:
+					System.out.println("Now inserting a doc");
+					in.nextLine();
+					System.out.println("\t Enter name :");
+					name=in.nextLine();
+					System.out.println("\t Enter department :");
+					dept=in.nextLine();
+					System.out.println("\t Enter post :");
+					post=in.nextLine();
+					System.out.println("\t Enter salary :");
+					salary=in.nextInt();
+					
+					System.out.println("\t One document created");
+					
+					doc=new BasicDBObject("name",name);
+					doc.append("dept", dept);
+					doc.append("salary", salary);
+					doc.append("post", post);
+					
+					col.insert(doc);
+					
+					System.out.println("Total number of documents in this collection are ="+col.getCount());
+					break;
+				case 2:
+					dbc=col.find();
+					System.out.println("Documents in this collection are :");
+					while(dbc.hasNext())
+					{
+						System.out.println(dbc.next());
+					}
+					dbc.close();
+					break;
+				case 4:
+					System.out.println("\nEnter Salary");
+					salary=in.nextInt();
+					System.out.println("The salary ="+salary);
+					Qdoc=new BasicDBObject("salary",new BasicDBObject("$gt",salary));
+					dbc=col.find(Qdoc);
+					System.out.println("Documents with salary more than "+salary+"are");
+					while(dbc.hasNext())
+					{
+						System.out.println(dbc.next());
+					}
+					dbc.close();
+					Qdoc=new BasicDBObject("salary",new BasicDBObject("$lt",salary));
+					dbc=col.find(Qdoc);
+					System.out.println("\n Documents with salary less than "+salary+"are");
+					while(dbc.hasNext())
+					{
+						System.out.println(dbc.next());
+						
+					}
+					dbc.close();
+					break;
+				case 3:
+					Rdoc=new BasicDBObject();
+					System.out.println("\tEnter name you want to remove");
+					name=in.nextLine();
+					name=in.nextLine();
+					System.out.println("Name you want to remove is"+name);
+					Rdoc.append("name",name);
+					col.remove(Rdoc);
+					dbc=col.find();
+					System.out.println("\n Documents without"+name);
+					while(dbc.hasNext())
+					{
+						System.out.println(dbc.next());
+						
+					}
+					dbc.close();
+					break;
+				}
+			}while(choice<5);
+			mongoClient.close();in.close();
+		}
+		catch(Exception e)
+		{
+			System.out.println("Exception Thrown");
+		}
+
+	}
+
+}
+
+/*
+
+ OUTPUT :
+
+Hello MongoDB
+Sep 11, 2017 6:21:50 PM com.mongodb.diagnostics.logging.JULLogger log
+INFO: Cluster created with settings {hosts=[localhost:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+Get existing Collection
+Enter choice :
+1.Insert a document
+2.Show collection
+3.Delete a document
+4.Searchy a document
+5.Exit
+Sep 11, 2017 6:21:51 PM com.mongodb.diagnostics.logging.JULLogger log
+INFO: Opened connection [connectionId{localValue:1, serverValue:20}] to localhost:27017
+Sep 11, 2017 6:21:51 PM com.mongodb.diagnostics.logging.JULLogger log
+INFO: Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 0, 2]}, minWireVersion=0, maxWireVersion=3, electionId=null, maxDocumentSize=16777216, roundTripTimeNanos=484179}
+1
+Now inserting a doc
+	 Enter name :
+Bhumi
+	 Enter department :
+comp
+	 Enter post :
+Software developer
+	 Enter salary :
+50000
+	 One document created
+Sep 11, 2017 6:22:18 PM com.mongodb.diagnostics.logging.JULLogger log
+INFO: Opened connection [connectionId{localValue:2, serverValue:21}] to localhost:27017
+Total number of documents in this collection are =1
+Enter choice :
+1.Insert a document
+2.Show collection
+3.Delete a document
+4.Searchy a document
+5.Exit
+1
+Now inserting a doc
+	 Enter name :
+Rutuja
+	 Enter department :
+entc
+	 Enter post :
+manager
+	 Enter salary :
+80000
+	 One document created
+Total number of documents in this collection are =2
+Enter choice :
+1.Insert a document
+2.Show collection
+3.Delete a document
+4.Searchy a document
+5.Exit
+2
+Documents in this collection are :
+{ "_id" : { "$oid" : "59b6870274a9ca1375986a55"} , "name" : "Bhumi" , "dept" : "comp" , "salary" : 50000 , "post" : "Software developer"}
+{ "_id" : { "$oid" : "59b6871f74a9ca1375986a56"} , "name" : "Rutuja" , "dept" : "entc" , "salary" : 80000 , "post" : "manager"}
+Enter choice :
+1.Insert a document
+2.Show collection
+3.Delete a document
+4.Searchy a document
+5.Exit
+4
+
+Enter Salary
+50000
+The salary =50000
+Documents with salary more than 50000are
+{ "_id" : { "$oid" : "59b6871f74a9ca1375986a56"} , "name" : "Rutuja" , "dept" : "entc" , "salary" : 80000 , "post" : "manager"}
+
+ Documents with salary less than 50000are
+Enter choice :
+1.Insert a document
+2.Show collection
+3.Delete a document
+4.Searchy a document
+5.Exit
+1
+Now inserting a doc
+	 Enter name :
+Rishi
+	 Enter department :
+comp
+	 Enter post :
+Manager
+	 Enter salary :
+75000
+	 One document created
+Total number of documents in this collection are =3
+Enter choice :
+1.Insert a document
+2.Show collection
+3.Delete a document
+4.Searchy a document
+5.Exit
+4
+
+Enter Salary
+75000
+The salary =75000
+Documents with salary more than 75000are
+{ "_id" : { "$oid" : "59b6871f74a9ca1375986a56"} , "name" : "Rutuja" , "dept" : "entc" , "salary" : 80000 , "post" : "manager"}
+
+ Documents with salary less than 75000are
+{ "_id" : { "$oid" : "59b6870274a9ca1375986a55"} , "name" : "Bhumi" , "dept" : "comp" , "salary" : 50000 , "post" : "Software developer"}
+Enter choice :
+1.Insert a document
+2.Show collection
+3.Delete a document
+4.Searchy a document
+5.Exit
+3
+	Enter name you want to remove
+Rutuja
+Name you want to remove isRutuja
+
+ Documents withoutRutuja
+{ "_id" : { "$oid" : "59b6870274a9ca1375986a55"} , "name" : "Bhumi" , "dept" : "comp" , "salary" : 50000 , "post" : "Software developer"}
+{ "_id" : { "$oid" : "59b6874e74a9ca1375986a57"} , "name" : "Rishi" , "dept" : "comp" , "salary" : 75000 , "post" : "Manager"}
+Enter choice :
+1.Insert a document
+2.Show collection
+3.Delete a document
+4.Searchy a document
+5.Exit
+5
+Sep 11, 2017 6:23:58 PM com.mongodb.diagnostics.logging.JULLogger log
+INFO: Closed connection [connectionId{localValue:2, serverValue:21}] to localhost:27017 because the pool has been closed.
+
+
+Terminal (client) :
+
+> db.roll.find().pretty()
+{
+	"_id" : ObjectId("59b6870274a9ca1375986a55"),
+	"name" : "Bhumi",
+	"dept" : "comp",
+	"salary" : 50000,
+	"post" : "Software developer"
+}
+{
+	"_id" : ObjectId("59b6874e74a9ca1375986a57"),
+	"name" : "Rishi",
+	"dept" : "comp",
+	"salary" : 75000,
+	"post" : "Manager"
+}
+
+
+*/

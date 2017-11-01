@@ -1,0 +1,74 @@
+delimiter //
+	create function totalcount(c varchar(20)) returns int
+
+begin
+	declare cnt int;
+	select count(*) into cnt from student where class=c;
+	return cnt;
+
+end //
+
+delimeter;
+
+
+output:
+MySQL [b74]> select * from student;
+    -> //
++------+---------+-------+-------------+------+
+| roll | sname   | marks | class       | dept |
++------+---------+-------+-------------+------+
+|    1 | shivani |    80 | Distinction | COMP |
+|    2 | Pooja   |    76 | Distinction | ENTC |
+|    3 | Ajay    |    30 | fail        | MECH |
+|    4 | Asmi    |    90 | Distinction | COMP |
+|    5 | tanisha |    60 | NULL        | COMP |
+|    6 | Suresh  |    14 | NULL        | MECH |
+|    7 | Sujay   |    40 | NULL        | MECH |
++------+---------+-------+-------------+------+
+7 rows in set (0.00 sec)
+
+MySQL [b74]> call setclass();
+    -> //
++-----------------------+
+| Updated successfully! |
++-----------------------+
+| Updated successfully! |
++-----------------------+
+1 row in set (0.12 sec)
+
+Query OK, 0 rows affected (0.12 sec)
+
+
+MySQL [b74]> select * from student;//
++------+---------+-------+-------------+------+
+| roll | sname   | marks | class       | dept |
++------+---------+-------+-------------+------+
+|    1 | shivani |    80 | Distinction | COMP |
+|    2 | Pooja   |    76 | Distinction | ENTC |
+|    3 | Ajay    |    30 | fail        | MECH |
+|    4 | Asmi    |    90 | Distinction | COMP |
+|    5 | tanisha |    60 | NULL        | COMP |
+|    6 | Suresh  |    14 | fail        | MECH |
+|    7 | Sujay   |    40 | NULL        | MECH |
++------+---------+-------+-------------+------+
+7 rows in set (0.00 sec)
+
+MySQL [b74]> select totalcount("fail");
+    -> //
++--------------------+
+| totalcount("fail") |
++--------------------+
+|                  2 |
++--------------------+
+1 row in set (0.00 sec)
+
+
+MySQL [b74]> select totalcount("Distinction");//
++---------------------------+
+| totalcount("Distinction") |
++---------------------------+
+|                         3 |
++---------------------------+
+1 row in set (0.00 sec)
+
+

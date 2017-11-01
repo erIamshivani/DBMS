@@ -1,0 +1,72 @@
+Assign 9B Stored Procedure (using Parameterized Cursor)
+
+mysql> create table orollc(roll int, name varchar(20), addr varchar(20),primary key(roll));
+Query OK, 0 rows affected (0.15 sec)
+
+mysql> create table nrollc(roll int, name varchar(20), addr varchar(20),primary key(roll));
+Query OK, 0 rows affected (0.14 sec)
+
+mysql> insert into orollc values(1,'shivani','Pune');                           ';
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into orollc values(2,'pooja','Mumbai');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into orollc values(3,'asmi','Mumbai');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into orollc values(4,'tans','Pune');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select * from orollc;
++------+---------+--------+
+| roll | name    | addr   |
++------+---------+--------+
+|    1 | shivani | Pune   |
+|    2 | pooja   | Mumbai |
+|    3 | asmi    | Mumbai |
+|    4 | tans    | Pune   |
++------+---------+--------+
+4 rows in set (0.00 sec)
+
+delimiter //
+create procedure ncur(in rno int(3))
+begin
+declare c1 cursor for select roll from orollc where rno=roll;
+open c1;
+fetch c1 into rno;
+if not exists(select * from nrollc where rno=roll)
+then
+insert into nrollc select * from orollc where rno=roll;
+end if;
+close c1;
+end //
+delimiter;
+
+mysql> call ncur(2);
+    -> //
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select * from nrollc;
+    -> //
++------+-------+--------+
+| roll | name  | addr   |
++------+-------+--------+
+|    2 | pooja | Mumbai |
++------+-------+--------+
+1 row in set (0.00 sec)
+
+mysql> call ncur(4);//
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select * from nrollc;
+    -> //
++------+---------+--------+
+| roll | name    | addr   |
++------+---------+--------+
+|    1 | shivani | Pune   |
+|    2 | pooja   | Mumbai |
+|    4 | tans    | Pune   |
++------+---------+--------+
+3 rows in set (0.00 sec)
+

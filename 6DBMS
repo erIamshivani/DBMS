@@ -1,0 +1,65 @@
+delimiter //
+create procedure b_return(in mid int,in b_no int,in i_Date date)
+
+Begin 
+	declare tot int ;
+	declare num int ;
+
+	declare continue handler for not found select "cannot find record" as errmsg;
+
+	select datediff(sysdate(),idate) into num from issue where m_id=mid;
+
+	if num<15 then 
+	  set @tot=0;
+	end if;
+
+	if num > 15 and num < 30 then  
+	
+	  set @tot=num +5;
+	end if;
+
+	if num>=30 then 
+	  set @tot=num+50;
+	end if;
+
+
+	update issue set fine=@tot where m_id=mid and book_id=b_no and idate=i_Date;
+
+
+	update issue set rdate=sysdate() where m_id=mid and book_id=b_no and idate=i_Date;
+
+	update issue set status='R' where book_id=b_no;
+end //
+
+delimiter;
+
+/* Output=>
+
+MySQL [b87]>  call b_return(1234,3591,"2017-03-21");//
+
+MySQL [b87]>  call b_return(56667,234455,"2017-04-30");//
+
+
+MySQL [b87]> select * from issue;
+    -> //
++-------+----------+------------+------------+------+---------+--------+
+| M_id  | issue_no | idate      | rdate      | fine | Book_id | status |
++-------+----------+------------+------------+------+---------+--------+
+|  1234 |        1 | 2017-03-21 | 2017-07-19 |  170 |    3591 | R      |
+|    33 |        2 | 2017-02-21 | 2017-03-12 |   20 |     311 | R      |
+|  1111 |        3 | 2017-03-21 | 2017-04-07 |    5 |    3445 | R      |
+|  3591 |        4 | 2017-05-01 | 2017-05-17 |   10 |  344599 | R      |
+|  5443 |        5 | 2017-06-01 | 2017-06-17 |   10 |   11223 | R      |
+| 56667 |        6 | 2017-04-30 | 2017-07-19 |  130 |  234455 | R      |
++-------+----------+------------+------------+------+---------+--------+
+
+
+MySQL [b87]> call b_return(222,4521,"2017-02-12");//
++--------------------+
+| errmsg             |
++--------------------+
+| cannot find record |
++--------------------+
+1 row in set (0.00 sec)
+
+*/

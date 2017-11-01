@@ -1,0 +1,145 @@
+mysql> describe book;
++-------+--------------+------+-----+---------+-------+
+| Field | Type         | Null | Key | Default | Extra |
++-------+--------------+------+-----+---------+-------+
+| b_id  | int(11)      | YES  |     | NULL    |       |
+| bname | varchar(50)  | YES  |     | NULL    |       |
+| bpub  | varchar(50)  | YES  |     | NULL    |       |
+| bcost | decimal(7,2) | YES  |     | NULL    |       |
+| DOPub | date         | YES  |     | NULL    |       |
++-------+--------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+
+mysql> describe b_audit;
++--------+--------------+------+-----+---------+-------+
+| Field  | Type         | Null | Key | Default | Extra |
++--------+--------------+------+-----+---------+-------+
+| b_id   | int(11)      | YES  |     | NULL    |       |
+| bname  | varchar(50)  | YES  |     | NULL    |       |
+| bpub   | varchar(50)  | YES  |     | NULL    |       |
+| bcost  | decimal(7,2) | YES  |     | NULL    |       |
+| DOPub  | date         | YES  |     | NULL    |       |
+| action | varchar(20)  | YES  |     | NULL    |       |
+| a_date | date         | YES  |     | NULL    |       |
++--------+--------------+------+-----+---------+-------+
+7 rows in set (0.03 sec)
+
+/--------------------------------- INSERT BEFORE ------------------------------------------
+Delimiter //
+
+create trigger b_b_i
+before insert on book
+for each row
+begin
+insert into b_audit values(new.b_id,new.bname,new.bpub,new.bcost,new.DOPub,'inserted',now());
+
+end //
+
+delimiter ;
+
+;---------------------------------- BEFORE UPDATE -----------------------------------------------------------
+Delimiter //
+
+create trigger b_b_u
+before update on book
+for each row
+begin
+     set new.bname = upper(new.bname);
+     insert into b_audit values (old.b_id,new.bname,old.bpub,old.bcost,old.DOPub,"updated",now());
+end //
+delimiter ;
+
+//------------------------------- AFTER DELETE ------------------------------------------------------------------
+
+Delimiter //
+
+create trigger b_a_d
+after delete on book
+for each row
+begin
+    insert into b_audit values (old.b_id,old.bname,old.bpub,old.bcost,old.DOPub,"deleted",now());
+end //
+
+delimiter ;
+;-----------------------------------------------------------------------------------------------
+
+//OUTPUT 
+
+mysql> select * from book;
++------+-------+-------+-------+------------+
+| b_id | bname | bpub  | bcost | DOPub      |
++------+-------+-------+-------+------------+
+|    2 | HP    | NCERT | 12.00 | 2017-09-09 |
+|    3 | HP    | NCERT | 10.00 | 2017-09-10 |
++------+-------+-------+-------+------------+
+2 rows in set (0.00 sec)
+
+mysql> insert into book values(1,"Taneban","McHills",90.0,"2009/12/12");
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select * from book;
++------+---------+---------+-------+------------+
+| b_id | bname   | bpub    | bcost | DOPub      |
++------+---------+---------+-------+------------+
+|    2 | HP      | NCERT   | 12.00 | 2017-09-09 |
+|    3 | HP      | NCERT   | 10.00 | 2017-09-10 |
+|    1 | Taneban | McHills | 90.00 | 2009-12-12 |
++------+---------+---------+-------+------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from b_audit;
++------+-------------------+------------+-------+------------+----------+------------+
+| b_id | bname             | bpub       | bcost | DOPub      | action   | a_date     |
++------+-------------------+------------+-------+------------+----------+------------+
+|    5 | WUTHERING HEIGHTS | Scholastic | 12.50 | 2017-08-16 | deleted  | 2017-08-16 |
+|    1 | Taneban           | McHills    | 90.00 | 2009-12-12 | inserted | 2017-08-16 |
++------+-------------------+------------+-------+------------+----------+------------+
+2 rows in set (0.00 sec)
+
+mysql> update book set bname="Wuthering Heights" where b_id=3;
+Query OK, 1 row affected (0.02 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from book;
++------+-------------------+---------+-------+------------+
+| b_id | bname             | bpub    | bcost | DOPub      |
++------+-------------------+---------+-------+------------+
+|    2 | HP                | NCERT   | 12.00 | 2017-09-09 |
+|    3 | WUTHERING HEIGHTS | NCERT   | 10.00 | 2017-09-10 |
+|    1 | Taneban           | McHills | 90.00 | 2009-12-12 |
++------+-------------------+---------+-------+------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from b_audit;
++------+-------------------+------------+-------+------------+----------+------------+
+| b_id | bname             | bpub       | bcost | DOPub      | action   | a_date     |
++------+-------------------+------------+-------+------------+----------+------------+
+|    5 | WUTHERING HEIGHTS | Scholastic | 12.50 | 2017-08-16 | deleted  | 2017-08-16 |
+|    1 | Taneban           | McHills    | 90.00 | 2009-12-12 | inserted | 2017-08-16 |
+|    3 | WUTHERING HEIGHTS | NCERT      | 10.00 | 2017-09-10 | updated  | 2017-08-16 |
++------+-------------------+------------+-------+------------+----------+------------+
+3 rows in set (0.01 sec)
+
+mysql> delete from book where b_id=1;
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select * from book;
++------+-------------------+-------+-------+------------+
+| b_id | bname             | bpub  | bcost | DOPub      |
++------+-------------------+-------+-------+------------+
+|    2 | HP                | NCERT | 12.00 | 2017-09-09 |
+|    3 | WUTHERING HEIGHTS | NCERT | 10.00 | 2017-09-10 |
++------+-------------------+-------+-------+------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from b_audit;
++------+-------------------+------------+-------+------------+----------+------------+
+| b_id | bname             | bpub       | bcost | DOPub      | action   | a_date     |
++------+-------------------+------------+-------+------------+----------+------------+
+|    5 | WUTHERING HEIGHTS | Scholastic | 12.50 | 2017-08-16 | deleted  | 2017-08-16 |
+|    1 | Taneban           | McHills    | 90.00 | 2009-12-12 | inserted | 2017-08-16 |
+|    3 | WUTHERING HEIGHTS | NCERT      | 10.00 | 2017-09-10 | updated  | 2017-08-16 |
+|    1 | Taneban           | McHills    | 90.00 | 2009-12-12 | deleted  | 2017-08-16 |
++------+-------------------+------------+-------+------------+----------+------------+
+4 rows in set (0.00 sec)

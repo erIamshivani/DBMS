@@ -1,0 +1,286 @@
+//Assignment 13
+
+
+
+	> use b59
+	switched to db b59
+	> db.createCollection("Student")
+	{ "ok" : 1 }
+	=========================================
+		CREATION OF STUDENT TABLE
+	=========================================
+
+
+	{ db.Student.insert(Rollno:4,Name:"Manali",Class:"A",Marks:45)
+	2017-09-18T14:38:28.586+0530 E QUERY    SyntaxError: Unexpected token :
+	> db.Student.insert({Rollno:4,Name:"Manali",Class:"A",Marks:45})
+	WriteResult({ "nInserted" : 1 })
+	> db.Student.insert({Rollno:5,Name:"Vasudha",Class:"A",Marks:75})
+	WriteResult({ "nInserted" : 1 })
+	> db.Student.insert({Rollno:6,Name:"Priya",Class:"C",Marks:69})
+	WriteResult({ "nInserted" : 1 })
+
+
+	> db.Student.find()
+	{ "_id" : ObjectId("59bf8b80fb7f2a3b63ff67d2"), "Rollno" : 1, "Name" : "Akanksha", "Class" : "B", "Marks" : 65 }
+	{ "_id" : ObjectId("59bf8b99fb7f2a3b63ff67d3"), "Rollno" : 2, "Name" : "Sayali", "Class" : "A", "Marks" : 56 }
+	{ "_id" : ObjectId("59bf8baafb7f2a3b63ff67d4"), "Rollno" : 3, "Name" : "Rhea", "Class" : "B", "Marks" : 63 }
+	{ "_id" : ObjectId("59bf8d1ae61bdded93d7b3a4"), "Rollno" : 4, "Name" : "Manali", "Class" : "A", "Marks" : 45 }
+	{ "_id" : ObjectId("59bf8d2ce61bdded93d7b3a5"), "Rollno" : 5, "Name" : "Vasudha", "Class" : "A", "Marks" : 75 }
+
+	=======================================================
+			  QUERIES
+	=======================================================
+	1. Display list of all Students of A.
+
+	> db.Student.aggregate({$match:{"Class" : "A"}})
+	{ "_id" : ObjectId("59bf8b99fb7f2a3b63ff67d3"), "Rollno" : 2, "Name" : "Sayali", "Class" : "A", "Marks" : 56 }
+	{ "_id" : ObjectId("59bf8d1ae61bdded93d7b3a4"), "Rollno" : 4, "Name" : "Manali", "Class" : "A", "Marks" : 45 }
+	{ "_id" : ObjectId("59bf8d2ce61bdded93d7b3a5"), "Rollno" : 5, "Name" : "Vasudha", "Class" : "A", "Marks" : 75 }
+	{ "_id" : ObjectId("59bf8d7ae61bdded93d7b3a9"), "Rollno" : 9, "Name" : "Komal", "Class" : "A", "Marks" : 81 }
+
+	=======================================================
+	2. Display RollNo of A.
+
+	> db.Student.aggregate({$match:{"Class" : "A"}},{$sort:{"RollNo" : 1}})
+	{ "_id" : ObjectId("59bf8b99fb7f2a3b63ff67d3"), "Rollno" : 2, "Name" : "Sayali", "Class" : "A", "Marks" : 56 }
+	{ "_id" : ObjectId("59bf8d1ae61bdded93d7b3a4"), "Rollno" : 4, "Name" : "Manali", "Class" : "A", "Marks" : 45 }
+	{ "_id" : ObjectId("59bf8d2ce61bdded93d7b3a5"), "Rollno" : 5, "Name" : "Vasudha", "Class" : "A", "Marks" : 75 }
+	{ "_id" : ObjectId("59bf8d7ae61bdded93d7b3a9"), "Rollno" : 9, "Name" : "Komal", "Class" : "A", "Marks" : 81 }
+
+	=======================================================
+	3. Display list of all Students of B having marks>60.
+
+
+	> db.Student.aggregate({$match:{"Class" : "B"}},{$project:{"Rollno" : 1,"Name" : 1,"Marks":{$gt:["Marks",50]}}})
+	{ "_id" : ObjectId("59bf8b80fb7f2a3b63ff67d2"), "Rollno" : 1, "Name" : "Akanksha", "Marks" : true }
+	{ "_id" : ObjectId("59bf8baafb7f2a3b63ff67d4"), "Rollno" : 3, "Name" : "Rhea", "Marks" : true }
+	{ "_id" : ObjectId("59bf8d4de61bdded93d7b3a7"), "Rollno" : 7, "Name" : "Ruchi", "Marks" : true }
+	{ "_id" : ObjectId("59bf8d8de61bdded93d7b3aa"), "Rollno" : 10, "Name" : "Soniya", "Marks" : true }
+
+
+	=======================================================
+
+
+	> db.Student.aggregate({$project:{"Rollno" : 1,"Name" : 1,"Class" : 1,_id:0}})
+	{ "Rollno" : 1, "Name" : "Akanksha", "Class" : "B" }
+	{ "Rollno" : 2, "Name" : "Sayali", "Class" : "A" }
+	{ "Rollno" : 3, "Name" : "Rhea", "Class" : "B" }
+	{ "Rollno" : 4, "Name" : "Manali", "Class" : "A" }
+	{ "Rollno" : 5, "Name" : "Vasudha", "Class" : "A" }
+	{ "Rollno" : 6, "Name" : "Priya", "Class" : "C" }
+	{ "Rollno" : 7, "Name" : "Ruchi", "Class" : "B" }
+	{ "Rollno" : 8, "Name" : "Meghali", "Class" : "C" }
+	{ "Rollno" : 9, "Name" : "Komal", "Class" : "A" }
+	{ "Rollno" : 10, "Name" : "Soniya", "Class" : "B" }
+
+
+	=======================================================
+	5.Display name class and marks of all Students of C.
+
+	> db.Student.aggregate({$match:{"Class" : "C"}},{$project:{"Name" : 1,"Class" : 1,"Marks" : 1}})
+	{ "_id" : ObjectId("59bf8d3ae61bdded93d7b3a6"), "Name" : "Priya", "Class" : "C", "Marks" : 69 }
+	{ "_id" : ObjectId("59bf8d5ce61bdded93d7b3a8"), "Name" : "Meghali", "Class" : "C", "Marks" : 71 }
+
+	=======================================================
+	6. Display name class and marks of all Students of A in descending order of marks.
+
+	> db.Student.aggregate({$match:{"Class" : "A"}},{$sort:{ "Marks":-1}},{$project:{"Name" : 1,"Class" : 1,"Marks" : 1}}) 
+	{ "_id" : ObjectId("59bf8d7ae61bdded93d7b3a9"), "Name" : "Komal", "Class" : "A", "Marks" : 81 }
+	{ "_id" : ObjectId("59bf8d2ce61bdded93d7b3a5"), "Name" : "Vasudha", "Class" : "A", "Marks" : 75 }
+	{ "_id" : ObjectId("59bf8b99fb7f2a3b63ff67d3"), "Name" : "Sayali", "Class" : "A", "Marks" : 56 }
+	{ "_id" : ObjectId("59bf8d1ae61bdded93d7b3a4"), "Name" : "Manali", "Class" : "A", "Marks" : 45 }
+
+
+	=======================================================
+	7. Display name class and marks of first 3 toppers of B
+
+	> db.Student.aggregate({$match:{"Class" : "B"}},{$sort:{ "Marks":-1}},{$limit:3},{$project:{"Name" : 1,"Class" : 1,"Marks" : 1}}) 
+	{ "_id" : ObjectId("59bf8d8de61bdded93d7b3aa"), "Name" : "Soniya", "Class" : "B", "Marks" : 72 }
+	{ "_id" : ObjectId("59bf8b80fb7f2a3b63ff67d2"), "Name" : "Akanksha", "Class" : "B", "Marks" : 65 }
+	{ "_id" : ObjectId("59bf8baafb7f2a3b63ff67d4"), "Name" : "Rhea", "Class" : "B", "Marks" : 63 }
+
+	=======================================================
+	8. Display count of Students in each division.
+
+	>  db.Student.aggregate({$group:{_id:"$Class",count:{$sum:1}}}) 
+	{ "_id" : "C", "count" : 2 }
+	{ "_id" : "A", "count" : 4 }
+	{ "_id" : "B", "count" : 4 }
+
+	=======================================================
+	9. Show the count of number of  Students in each division along with average marks.
+
+	> db.Student.aggregate({$group:{_id:"$Class",count:{$sum:1},AvgMrks:{$avg: "$Marks"}}}) 
+	{ "_id" : "C", "count" : 2, "AvgMrks" : 70 }
+	{ "_id" : "A", "count" : 4, "AvgMrks" : 64.25 }
+	{ "_id" : "B", "count" : 4, "AvgMrks" : 63.25 }
+
+	=======================================================
+	10. Display marks of topper of each division.
+
+	> db.Student.aggregate({$group:{_id:"$Class","Topper":{$max:"$Marks"}}},{$project:{"Name" : 1,"Topper" :1}})
+	{ "_id" : "C", "Topper" : 71 }
+	{ "_id" : "A", "Topper" : 81 }
+	{ "_id" : "B", "Topper" : 72 }
+
+	=======================================================
+	11. Display marks of topper of each division and show in sorted order12.Display the first 5 toppers of TE.
+
+	>  db.Student.aggregate({$group:{_id:"$Class","Topper":{$max:"$Marks"}}},{$sort: {"Topper" : -1}})
+	{ "_id" : "A", "Topper" : 81 }
+	{ "_id" : "B", "Topper" : 72 }
+	{ "_id" : "C", "Topper" : 71 }
+
+	=======================================================
+	12. Display the first 5 toppers of TE.
+
+	> db.Student.aggregate({$sort:{"Marks":-1}},{$limit:5}) 
+	{ "_id" : ObjectId("59bf8d7ae61bdded93d7b3a9"), "Rollno" : 9, "Name" : "Komal", "Class" : "A", "Marks" : 81 }
+	{ "_id" : ObjectId("59bf8d2ce61bdded93d7b3a5"), "Rollno" : 5, "Name" : "Vasudha", "Class" : "A", "Marks" : 75 }
+	{ "_id" : ObjectId("59bf8d8de61bdded93d7b3aa"), "Rollno" : 10, "Name" : "Soniya", "Class" : "B", "Marks" : 72 }
+	{ "_id" : ObjectId("59bf8d5ce61bdded93d7b3a8"), "Rollno" : 8, "Name" : "Meghali", "Class" : "C", "Marks" : 71 }
+	{ "_id" : ObjectId("59bf8d3ae61bdded93d7b3a6"), "Rollno" : 6, "Name" : "Priya", "Class" : "C", "Marks" : 69 }
+
+
+
+	=======================================================
+	13. Create index on the name field and use the explain() function to understand the query execution plan and note the performance enhancement
+
+
+	> db.Student.ensureIndex({"Name":1}) 
+	{
+		"createdCollectionAutomatically" : false,
+		"numIndexesBefore" : 1,
+		"numIndexesAfter" : 2,
+		"ok" : 1
+	}
+
+	> db.Student.find({"Name":"Hunt"},{}).explain() 
+	{
+		"queryPlanner" : {
+			"plannerVersion" : 1,
+			"namespace" : "b59.Student",
+			"indexFilterSet" : false,
+			"parsedQuery" : {
+				"Name" : {
+					"$eq" : "Hunt"
+				}
+			},
+			"winningPlan" : {
+				"stage" : "FETCH",
+				"inputStage" : {
+					"stage" : "IXSCAN",
+					"keyPattern" : {
+						"Name" : 1
+					},
+					"indexName" : "Name_1",
+					"isMultiKey" : false,
+					"direction" : "forward",
+					"indexBounds" : {
+						"Name" : [
+							"[\"Hunt\", \"Hunt\"]"
+						]
+					}
+				}
+			},
+			"rejectedPlans" : [ ]
+		},
+		"serverInfo" : {
+			"host" : "localhost.localdomain",
+			"port" : 27017,
+			"version" : "3.0.2",
+			"gitVersion" : "6201872043ecbbc0a4cc169b5482dcf385fc464f"
+		},
+		"ok" : 1
+	}
+
+	=======================================================
+	14. Show existing indexes on the collection.
+
+	>  db.Student.getIndexes() 
+	[
+		{
+			"v" : 1,
+			"key" : {
+				"_id" : 1
+			},
+			"name" : "_id_",
+			"ns" : "b59.Student"
+		},
+		{
+			"v" : 1,
+			"key" : {
+				"Name" : 1
+			},
+			"name" : "Name_1",
+			"ns" : "b59.Student"
+		}
+	]
+
+	=======================================================
+			CITIES DATABASE
+	=======================================================
+
+
+	1. Display all States with total population greater than 50000
+
+	> db.cities.aggregate([{$group:{_id:"$state",totalPop:{$sum:"$pop"}}},{$match:{totalPop:{$gte:50000}}}])
+	{ "_id" : "CT", "totalPop" : 133376 }
+	{ "_id" : "NJ", "totalPop" : 208008 }
+	{ "_id" : "NH", "totalPop" : 65114 }
+	{ "_id" : "RI", "totalPop" : 108144 }
+	{ "_id" : "MA", "totalPop" : 242546 }
+
+	=======================================================
+
+	2. Display the Average Population of Each State
+
+	> db.cities.aggregate({$group:{_id:"$state",count:{$sum:1},AvgPopulation:{$avg: "$pop"}}}) 
+	{ "_id" : "CT", "count" : 11, "AvgPopulation" : 12125.09090909091 }
+	{ "_id" : "VT", "count" : 11, "AvgPopulation" : 1316.2727272727273 }
+	{ "_id" : "ME", "count" : 7, "AvgPopulation" : 1219.5714285714287 }
+	{ "_id" : "NJ", "count" : 8, "AvgPopulation" : 26001 }
+
+	> db.cities.aggregate([{$group:{_id:{state:"$state",city:"$city"},pop:{$sum:"$pop"}}},{$group:{_id:"$_id.state",avgCityPop:{$avg:"$pop"}}}])
+	{ "_id" : "ME", "avgCityPop" : 1219.5714285714287 }
+	{ "_id" : "VT", "avgCityPop" : 1316.2727272727273 }
+	{ "_id" : "NJ", "avgCityPop" : 29715.428571428572 }
+
+	=======================================================
+
+	3. Display The Smallest and largest cities of each State
+
+	> db.cities.aggregate({$group:{_id:"$state","MIN":{$min:"$pop"},_id:"$state","MAX":{$max:"$pop"}}},{$project:{"city":1,"MAX":1,"MIN":1}})
+	{ "_id" : "CT", "MIN" : 1477, "MAX" : 45558 }
+	{ "_id" : "VT", "MIN" : 35, "MAX" : 5406 }
+	{ "_id" : "RI", "MIN" : 45, "MAX" : 29842 }
+	{ "_id" : "MA", "MIN" : 16, "MAX" : 36963 }
+
+	=======================================================
+
+	4. Display List Of all cities in "CT" state in descending order of Population
+
+	> db.cities.aggregate({$match:{"state":"CT"}},{$sort:{"pop":-1}})
+	{ "_id" : "06082", "city" : "ENFIELD", "loc" : [ -72.565218, 41.989016 ], "pop" : 45558, "state" : "CT" }
+	{ "_id" : "06074", "city" : "SOUTH WINDSOR", "loc" : [ -72.557585, 41.834081 ], "pop" : 22090, "state" : "CT" }
+	{ "_id" : "06070", "city" : "SIMSBURY", "loc" : [ -72.821267, 41.873712 ], "pop" : 14589, "state" : "CT" }
+	{ "_id" : "06076", "city" : "STAFFORD SPRINGS", "loc" : [ -72.289857, 41.966127 ], "pop" : 12392, "state" : "CT" }
+	{ "_id" : "06084", "city" : "TOLLAND", "loc" : [ -72.371789, 41.869647 ], "pop" : 10973, "state" : "CT" }
+	{ "_id" : "06071", "city" : "SOMERS", "loc" : [ -72.458266, 41.997813 ], "pop" : 9685, "state" : "CT" }
+
+	=======================================================
+
+	5. Display the names Of states along with the Number of Cities in the state,in descending order of Count
+
+	> db.cities.aggregate({$group:{"_id":"$state",count:{$sum:1}}},{$sort:{"count":1}})
+	{ "_id" : "ME", "count" : 7 }
+	{ "_id" : "NJ", "count" : 8 }
+	{ "_id" : "NH", "count" : 10 }
+	{ "_id" : "CT", "count" : 11 }
+	{ "_id" : "VT", "count" : 11 }
+	{ "_id" : "RI", "count" : 12 }
+	{ "_id" : "MA", "count" : 26 }
+
+
+

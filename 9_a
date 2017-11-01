@@ -1,0 +1,51 @@
+Assign 9A  3474
+delimiter //
+
+create procedure copy_cur()
+begin
+declare rno1 int;
+declare exit_loop boolean;
+declare c1 cursor for select roll from OLD;
+
+Declare continue handler for not found set exit_loop=true;
+open c1;
+l1:loop
+fetch c1 into rno1;
+if not exists(select * from nrollc where roll=rno1)then
+insert into nrollc select * from orollc where roll=rno1;
+end if;
+
+if exit_loop then
+close c1;
+leave l1;
+end if;
+end loop l1;
+end //
+delimiter ;
+
+--------------------------------------------------------------------------
+
+mysql> select * from orollc;
++------+---------+---------+
+| roll | name    | address |
++------+---------+---------+
+|    1 | pooja   | pune    |
+|    2 | asmita  | pimpri  |
+|    3 | shivani | baner   |
+|    4 | tanisha | aundh   |
++------+---------+---------+
+4 rows in set (0.00 sec)
+
+mysql> call copy_cur();
+Query OK, 0 rows affected (0.15 sec)
+
+mysql> select * from NEW;
++------+---------+---------+
+| roll | name    | address |
++------+---------+---------+
+|    1 | pooja   | pune    |
+|    2 | asmita  | pimpri  |
+|    3 | shivani | baner   |
+|    4 | tanisha | aundh   |
++------+---------+---------+
+4 rows in set (0.00 sec)

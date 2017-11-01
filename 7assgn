@@ -1,0 +1,96 @@
+Cursor Procedure.
+
+mysql> insert into student values(1,'shivani',80,default,'COMP');//
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into student values(2,'Pooja',76,default,'ENTC');//
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into student values(3,'Ajay',30,default,'MECH');//
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into student values(4,'Asmi',90,default,'COMP');//
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select * from student;
+    -> //
++------+---------+-------+-------+------+
+| roll | sname   | marks | class | dept |
++------+---------+-------+-------+------+
+|    1 | shivani |    80 | NULL  | COMP |
+|    2 | Pooja   |    76 | NULL  | ENTC |
+|    3 | Ajay    |    30 | NULL  | MECH |
+|    4 | Asmi    |    90 | NULL  | COMP |
++------+---------+-------+-------+------+
+4 rows in set (0.01 sec)
+
+
+mysql> delimiter //
+
+create procedure setclass()
+begin
+
+	declare mks int;
+	declare num int;
+	declare done int default 0;
+	declare c1 cursor for select roll,marks from student;
+
+	declare continue handler for not found set done=1;
+	open c1;
+
+	l1:loop
+
+	fetch c1 into num,mks;
+	if done=1 then
+	leave l1;
+	end if;
+
+	if mks>75 
+		then update student set class='Distinction' where roll=num;
+	end if;
+
+	if mks>60 and mks<75 then
+		update student set class = 'first class'
+		where roll=num;
+	end if;
+
+	if mks>50 and mks<60 then
+		update student set class = 'Second Class' where roll=num;
+	end if;
+
+	if mks<35
+	then
+		update student set class = 'fail' where
+		roll=num;
+	end if;
+
+	end loop l1;
+	close c1;
+
+	select 'Updated successfully!';
+END//
+DELIMITER ;
+
+OutPut on terminal:
+
+mysql> call setclass();
++-----------------------+
+| Updated successfully! |
++-----------------------+
+| Updated successfully! |
++-----------------------+
+1 row in set (0.14 sec)
+
+Query OK, 0 rows affected (0.14 sec)
+
+mysql> select * from student;
++------+---------+-------+-------------+------+
+| roll | sname   | marks | class       | dept |
++------+---------+-------+-------------+------+
+|    1 | shivani |    80 | Distinction | COMP |
+|    2 | Pooja   |    76 | Distinction | ENTC |
+|    3 | Ajay    |    30 | fail        | MECH |
+|    4 | Asmi    |    90 | Distinction | COMP |
++------+---------+-------+-------------+------+
+4 rows in set (0.00 sec)
+

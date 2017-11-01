@@ -1,0 +1,2484 @@
+> use Cities
+switched to db Cities
+> db.createCollection('cities')
+{ "ok" : 1 }
+> db.cities.insert([{ "_id" : "01010", "city" : "BRIMFIELD", "loc" : [ -72.188455, 42.116543 ], "pop" : 3706, "state" : "MA" },
+... { "_id" : "01011", "city" : "CHESTER", "loc" : [ -72.988761, 42.279421 ], "pop" : 1688, "state" : "MA" },
+... { "_id" : "01012", "city" : "CHESTERFIELD", "loc" : [ -72.833309, 42.38167 ], "pop" : 177, "state" : "MA" },
+... { "_id" : "01013", "city" : "CHICOPEE", "loc" : [ -72.607962, 42.162046 ], "pop" : 23396, "state" : "MA" },
+... { "_id" : "01020", "city" : "CHICOPEE", "loc" : [ -72.576142, 42.176443 ], "pop" : 31495, "state" : "MA" },
+... { "_id" : "01022", "city" : "WESTOVER AFB", "loc" : [ -72.558657, 42.196672 ], "pop" : 1764, "state" : "MA" },
+... { "_id" : "01026", "city" : "CUMMINGTON", "loc" : [ -72.905767, 42.435296 ], "pop" : 1484, "state" : "MA" },
+... { "_id" : "01027", "city" : "MOUNT TOM", "loc" : [ -72.67992099999999, 42.264319 ], "pop" : 16864, "state" : "MA" }])
+BulkWriteResult({
+	"writeErrors" : [ ],
+	"writeConcernErrors" : [ ],
+	"nInserted" : 8,
+	"nUpserted" : 0,
+	"nMatched" : 0,
+	"nModified" : 0,
+	"nRemoved" : 0,
+	"upserted" : [ ]
+})
+> show collections
+cities
+system.indexes
+> db.cities.find().pretty()
+{
+	"_id" : "01010",
+	"city" : "BRIMFIELD",
+	"loc" : [
+		-72.188455,
+		42.116543
+	],
+	"pop" : 3706,
+	"state" : "MA"
+}
+{
+	"_id" : "01011",
+	"city" : "CHESTER",
+	"loc" : [
+		-72.988761,
+		42.279421
+	],
+	"pop" : 1688,
+	"state" : "MA"
+}
+{
+	"_id" : "01012",
+	"city" : "CHESTERFIELD",
+	"loc" : [
+		-72.833309,
+		42.38167
+	],
+	"pop" : 177,
+	"state" : "MA"
+}
+{
+	"_id" : "01013",
+	"city" : "CHICOPEE",
+	"loc" : [
+		-72.607962,
+		42.162046
+	],
+	"pop" : 23396,
+	"state" : "MA"
+}
+{
+	"_id" : "01020",
+	"city" : "CHICOPEE",
+	"loc" : [
+		-72.576142,
+		42.176443
+	],
+	"pop" : 31495,
+	"state" : "MA"
+}
+{
+	"_id" : "01022",
+	"city" : "WESTOVER AFB",
+	"loc" : [
+		-72.558657,
+		42.196672
+	],
+	"pop" : 1764,
+	"state" : "MA"
+}
+{
+	"_id" : "01026",
+	"city" : "CUMMINGTON",
+	"loc" : [
+		-72.905767,
+		42.435296
+	],
+	"pop" : 1484,
+	"state" : "MA"
+}
+{
+	"_id" : "01027",
+	"city" : "MOUNT TOM",
+	"loc" : [
+		-72.679921,
+		42.264319
+	],
+	"pop" : 16864,
+	"state" : "MA"
+}
+> db.cities.insert([{ "_id" : "02804", "city" : "ASHAWAY", "loc" : [ -71.783db.cities.insert([{ "_id" : "02804", "city" : "ASHAWAY", "loc" : [ -71.783db.cities.insert([{ "_id" : "02804", "city" : "ASHAWAY", "loc" : [ -71.783745, 41.423054 ], "pop" : 2472, "state" : "RI" },
+... { "_id" : "02806", "city" : "BARRINGTON", "loc" : [ -71.317497, 41.744334 ], "pop" : 15849, "state" : "RI" },
+... { "_id" : "02807", "city" : "BLOCK ISLAND", "loc" : [ -71.574825, 41.171546 ], "pop" : 836, "state" : "RI" },
+... { "_id" : "02808", "city" : "BRADFORD", "loc" : [ -71.746453, 41.411448 ], "pop" : 2184, "state" : "RI" },
+... { "_id" : "02809", "city" : "BRISTOL", "loc" : [ -71.26755799999999, 41.68247 ], "pop" : 21625, "state" : "RI" },
+... { "_id" : "02812", "city" : "RICHMOND", "loc" : [ -71.650279, 41.46941 ], "pop" : 1011, "state" : "RI" },
+... { "_id" : "02813", "city" : "CHARLESTOWN", "loc" : [ -71.661455, 41.400749 ], "pop" : 6663, "state" : "RI" },
+... { "_id" : "02814", "city" : "CHEPACHET", "loc" : [ -71.679483, 41.91549 ], "pop" : 8191, "state" : "RI" },
+... { "_id" : "02815", "city" : "CLAYVILLE", "loc" : [ -71.67058900000001, 41.777762 ], "pop" : 45, "state" : "RI" },
+... { "_id" : "02816", "city" : "COVENTRY", "loc" : [ -71.57679400000001, 41.69143 ], "pop" : 29842, "state" : "RI" },
+... { "_id" : "02817", "city" : "WEST GREENWICH", "loc" : [ -71.64354899999999, 41.639977 ], "pop" : 3246, "state" : "RI" },
+... { "_id" : "02818", "city" : "EAST GREENWICH", "loc" : [ -71.474009, 41.649777 ], "pop" : 16180, "state" : "RI" },
+... { "_id" : "02822", "city" : "EXETER", "loc" : [ -71.607626, 41.574031 ], "pop" : 3774, "state" : "RI" },
+... { "_id" : "02825", "city" : "FOSTER", "loc" : [ -71.71874800000001, 41.781455 ], "pop" : 5175, "state" : "RI" },
+... { "_id" : "02827", "city" : "GREENE", "loc" : [ -71.735607, 41.706151 ], "pop" : 1241, "state" : "RI" },
+... { "_id" : "02828", "city" : "GREENVILLE", "loc" : [ -71.556923, 41.873409 ], "pop" : 6945, "state" : "RI" },
+... { "_id" : "02830", "city" : "HARRISVILLE", "loc" : [ -71.65340500000001, 41.976379 ], "pop" : 6384, "state" : "RI" }])
+BulkWriteResult({
+	"writeErrors" : [ ],
+	"writeConcernErrors" : [ ],
+	"nInserted" : 17,
+	"nUpserted" : 0,
+	"nMatched" : 0,
+	"nModified" : 0,
+	"nRemoved" : 0,
+	"upserted" : [ ]
+})
+> db.cities.insert([{ "_id" : "02804", "city" : "ASHAWAY", "loc" : [ -71.783745, 41.423054 ], "pop" : 2472, "state" : "RI" }, { "_id" : "02806", "citydb.cities.find().pretty()
+{
+	"_id" : "01010",
+	"city" : "BRIMFIELD",
+	"loc" : [
+		-72.188455,
+		42.116543
+	],
+	"pop" : 3706,
+	"state" : "MA"
+}
+{
+	"_id" : "01011",
+	"city" : "CHESTER",
+	"loc" : [
+		-72.988761,
+		42.279421
+	],
+	"pop" : 1688,
+	"state" : "MA"
+}
+{
+	"_id" : "01012",
+	"city" : "CHESTERFIELD",
+	"loc" : [
+		-72.833309,
+		42.38167
+	],
+	"pop" : 177,
+	"state" : "MA"
+}
+{
+	"_id" : "01013",
+	"city" : "CHICOPEE",
+	"loc" : [
+		-72.607962,
+		42.162046
+	],
+	"pop" : 23396,
+	"state" : "MA"
+}
+{
+	"_id" : "01020",
+	"city" : "CHICOPEE",
+	"loc" : [
+		-72.576142,
+		42.176443
+	],
+	"pop" : 31495,
+	"state" : "MA"
+}
+{
+	"_id" : "01022",
+	"city" : "WESTOVER AFB",
+	"loc" : [
+		-72.558657,
+		42.196672
+	],
+	"pop" : 1764,
+	"state" : "MA"
+}
+{
+	"_id" : "01026",
+	"city" : "CUMMINGTON",
+	"loc" : [
+		-72.905767,
+		42.435296
+	],
+	"pop" : 1484,
+	"state" : "MA"
+}
+{
+	"_id" : "01027",
+	"city" : "MOUNT TOM",
+	"loc" : [
+		-72.679921,
+		42.264319
+	],
+	"pop" : 16864,
+	"state" : "MA"
+}
+{
+	"_id" : "02804",
+	"city" : "ASHAWAY",
+	"loc" : [
+		-71.783745,
+		41.423054
+	],
+	"pop" : 2472,
+	"state" : "RI"
+}
+{
+	"_id" : "02806",
+	"city" : "BARRINGTON",
+	"loc" : [
+		-71.317497,
+		41.744334
+	],
+	"pop" : 15849,
+	"state" : "RI"
+}
+{
+	"_id" : "02807",
+	"city" : "BLOCK ISLAND",
+	"loc" : [
+		-71.574825,
+		41.171546
+	],
+	"pop" : 836,
+	"state" : "RI"
+}
+{
+	"_id" : "02808",
+	"city" : "BRADFORD",
+	"loc" : [
+		-71.746453,
+		41.411448
+	],
+	"pop" : 2184,
+	"state" : "RI"
+}
+{
+	"_id" : "02809",
+	"city" : "BRISTOL",
+	"loc" : [
+		-71.267558,
+		41.68247
+	],
+	"pop" : 21625,
+	"state" : "RI"
+}
+{
+	"_id" : "02812",
+	"city" : "RICHMOND",
+	"loc" : [
+		-71.650279,
+		41.46941
+	],
+	"pop" : 1011,
+	"state" : "RI"
+}
+{
+	"_id" : "02813",
+	"city" : "CHARLESTOWN",
+	"loc" : [
+		-71.661455,
+		41.400749
+	],
+	"pop" : 6663,
+	"state" : "RI"
+}
+{
+	"_id" : "02814",
+	"city" : "CHEPACHET",
+	"loc" : [
+		-71.679483,
+		41.91549
+	],
+	"pop" : 8191,
+	"state" : "RI"
+}
+{
+	"_id" : "02815",
+	"city" : "CLAYVILLE",
+	"loc" : [
+		-71.670589,
+		41.777762
+	],
+	"pop" : 45,
+	"state" : "RI"
+}
+{
+	"_id" : "02816",
+	"city" : "COVENTRY",
+	"loc" : [
+		-71.576794,
+		41.69143
+	],
+	"pop" : 29842,
+	"state" : "RI"
+}
+{
+	"_id" : "02817",
+	"city" : "WEST GREENWICH",
+	"loc" : [
+		-71.643549,
+		41.639977
+	],
+	"pop" : 3246,
+	"state" : "RI"
+}
+{
+	"_id" : "02818",
+	"city" : "EAST GREENWICH",
+	"loc" : [
+		-71.474009,
+		41.649777
+	],
+	"pop" : 16180,
+	"state" : "RI"
+}
+Type "it" for more
+> db.cities.find().pretty()
+{
+	"_id" : "01010",
+	"city" : "BRIMFIELD",
+	"loc" : [
+		-72.188455,
+		42.116543
+	],
+	"pop" : 3706,
+	"state" : "MA"
+}
+{
+	"_id" : "01011",
+	"city" : "CHESTER",
+	"loc" : [
+		-72.988761,
+		42.279421
+	],
+	"pop" : 1688,
+	"state" : "MA"
+}
+{
+	"_id" : "01012",
+	"city" : "CHESTERFIELD",
+	"loc" : [
+		-72.833309,
+		42.38167
+	],
+	"pop" : 177,
+	"state" : "MA"
+}
+{
+	"_id" : "01013",
+	"city" : "CHICOPEE",
+	"loc" : [
+		-72.607962,
+		42.162046
+	],
+	"pop" : 23396,
+	"state" : "MA"
+}
+{
+	"_id" : "01020",
+	"city" : "CHICOPEE",
+	"loc" : [
+		-72.576142,
+		42.176443
+	],
+	"pop" : 31495,
+	"state" : "MA"
+}
+{
+	"_id" : "01022",
+	"city" : "WESTOVER AFB",
+	"loc" : [
+		-72.558657,
+		42.196672
+	],
+	"pop" : 1764,
+	"state" : "MA"
+}
+{
+	"_id" : "01026",
+	"city" : "CUMMINGTON",
+	"loc" : [
+		-72.905767,
+		42.435296
+	],
+	"pop" : 1484,
+	"state" : "MA"
+}
+{
+	"_id" : "01027",
+	"city" : "MOUNT TOM",
+	"loc" : [
+		-72.679921,
+		42.264319
+	],
+	"pop" : 16864,
+	"state" : "MA"
+}
+{
+	"_id" : "02804",
+	"city" : "ASHAWAY",
+	"loc" : [
+		-71.783745,
+		41.423054
+	],
+	"pop" : 2472,
+	"state" : "RI"
+}
+{
+	"_id" : "02806",
+	"city" : "BARRINGTON",
+	"loc" : [
+		-71.317497,
+		41.744334
+	],
+	"pop" : 15849,
+	"state" : "RI"
+}
+{
+	"_id" : "02807",
+	"city" : "BLOCK ISLAND",
+	"loc" : [
+		-71.574825,
+		41.171546
+	],
+	"pop" : 836,
+	"state" : "RI"
+}
+{
+	"_id" : "02808",
+	"city" : "BRADFORD",
+	"loc" : [
+		-71.746453,
+		41.411448
+	],
+	"pop" : 2184,
+	"state" : "RI"
+}
+{
+	"_id" : "02809",
+	"city" : "BRISTOL",
+	"loc" : [
+		-71.267558,
+		41.68247
+	],
+	"pop" : 21625,
+	"state" : "RI"
+}
+{
+	"_id" : "02812",
+	"city" : "RICHMOND",
+	"loc" : [
+		-71.650279,
+		41.46941
+	],
+	"pop" : 1011,
+	"state" : "RI"
+}
+{
+	"_id" : "02813",
+	"city" : "CHARLESTOWN",
+	"loc" : [
+		-71.661455,
+		41.400749
+	],
+	"pop" : 6663,
+	"state" : "RI"
+}
+{
+	"_id" : "02814",
+	"city" : "CHEPACHET",
+	"loc" : [
+		-71.679483,
+		41.91549
+	],
+	"pop" : 8191,
+	"state" : "RI"
+}
+{
+	"_id" : "02815",
+	"city" : "CLAYVILLE",
+	"loc" : [
+		-71.670589,
+		41.777762
+	],
+	"pop" : 45,
+	"state" : "RI"
+}
+{
+	"_id" : "02816",
+	"city" : "COVENTRY",
+	"loc" : [
+		-71.576794,
+		41.69143
+	],
+	"pop" : 29842,
+	"state" : "RI"
+}
+{
+	"_id" : "02817",
+	"city" : "WEST GREENWICH",
+	"loc" : [
+		-71.643549,
+		41.639977
+	],
+	"pop" : 3246,
+	"state" : "RI"
+}
+{
+	"_id" : "02818",
+	"city" : "EAST GREENWICH",
+	"loc" : [
+		-71.474009,
+		41.649777
+	],
+	"pop" : 16180,
+	"state" : "RI"
+}
+Type "it" for more
+> db.cities.find().pretty()
+{
+	"_id" : "01010",
+	"city" : "BRIMFIELD",
+	"loc" : [
+		-72.188455,
+		42.116543
+	],
+	"pop" : 3706,
+	"state" : "MA"
+}
+{
+	"_id" : "01011",
+	"city" : "CHESTER",
+	"loc" : [
+		-72.988761,
+		42.279421
+	],
+	"pop" : 1688,
+	"state" : "MA"
+}
+{
+	"_id" : "01012",
+	"city" : "CHESTERFIELD",
+	"loc" : [
+		-72.833309,
+		42.38167
+	],
+	"pop" : 177,
+	"state" : "MA"
+}
+{
+	"_id" : "01013",
+	"city" : "CHICOPEE",
+	"loc" : [
+		-72.607962,
+		42.162046
+	],
+	"pop" : 23396,
+	"state" : "MA"
+}
+{
+	"_id" : "01020",
+	"city" : "CHICOPEE",
+	"loc" : [
+		-72.576142,
+		42.176443
+	],
+	"pop" : 31495,
+	"state" : "MA"
+}
+{
+	"_id" : "01022",
+	"city" : "WESTOVER AFB",
+	"loc" : [
+		-72.558657,
+		42.196672
+	],
+	"pop" : 1764,
+	"state" : "MA"
+}
+{
+	"_id" : "01026",
+	"city" : "CUMMINGTON",
+	"loc" : [
+		-72.905767,
+		42.435296
+	],
+	"pop" : 1484,
+	"state" : "MA"
+}
+{
+	"_id" : "01027",
+	"city" : "MOUNT TOM",
+	"loc" : [
+		-72.679921,
+		42.264319
+	],
+	"pop" : 16864,
+	"state" : "MA"
+}
+{
+	"_id" : "02804",
+	"city" : "ASHAWAY",
+	"loc" : [
+		-71.783745,
+		41.423054
+	],
+	"pop" : 2472,
+	"state" : "RI"
+}
+{
+	"_id" : "02806",
+	"city" : "BARRINGTON",
+	"loc" : [
+		-71.317497,
+		41.744334
+	],
+	"pop" : 15849,
+	"state" : "RI"
+}
+{
+	"_id" : "02807",
+	"city" : "BLOCK ISLAND",
+	"loc" : [
+		-71.574825,
+		41.171546
+	],
+	"pop" : 836,
+	"state" : "RI"
+}
+{
+	"_id" : "02808",
+	"city" : "BRADFORD",
+	"loc" : [
+		-71.746453,
+		41.411448
+	],
+	"pop" : 2184,
+	"state" : "RI"
+}
+{
+	"_id" : "02809",
+	"city" : "BRISTOL",
+	"loc" : [
+		-71.267558,
+		41.68247
+	],
+	"pop" : 21625,
+	"state" : "RI"
+}
+{
+	"_id" : "02812",
+	"city" : "RICHMOND",
+	"loc" : [
+		-71.650279,
+		41.46941
+	],
+	"pop" : 1011,
+	"state" : "RI"
+}
+{
+	"_id" : "02813",
+	"city" : "CHARLESTOWN",
+	"loc" : [
+		-71.661455,
+		41.400749
+	],
+	"pop" : 6663,
+	"state" : "RI"
+}
+{
+	"_id" : "02814",
+	"city" : "CHEPACHET",
+	"loc" : [
+		-71.679483,
+		41.91549
+	],
+	"pop" : 8191,
+	"state" : "RI"
+}
+{
+	"_id" : "02815",
+	"city" : "CLAYVILLE",
+	"loc" : [
+		-71.670589,
+		41.777762
+	],
+	"pop" : 45,
+	"state" : "RI"
+}
+{
+	"_id" : "02816",
+	"city" : "COVENTRY",
+	"loc" : [
+		-71.576794,
+		41.69143
+	],
+	"pop" : 29842,
+	"state" : "RI"
+}
+{
+	"_id" : "02817",
+	"city" : "WEST GREENWICH",
+	"loc" : [
+		-71.643549,
+		41.639977
+	],
+	"pop" : 3246,
+	"state" : "RI"
+}
+{
+	"_id" : "02818",
+	"city" : "EAST GREENWICH",
+	"loc" : [
+		-71.474009,
+		41.649777
+	],
+	"pop" : 16180,
+	"state" : "RI"
+}
+Type "it" for more
+> db.cities.find().pretty()
+{
+	"_id" : "01010",
+	"city" : "BRIMFIELD",
+	"loc" : [
+		-72.188455,
+		42.116543
+	],
+	"pop" : 3706,
+	"state" : "MA"
+}
+{
+	"_id" : "01011",
+	"city" : "CHESTER",
+	"loc" : [
+		-72.988761,
+		42.279421
+	],
+	"pop" : 1688,
+	"state" : "MA"
+}
+{
+	"_id" : "01012",
+	"city" : "CHESTERFIELD",
+	"loc" : [
+		-72.833309,
+		42.38167
+	],
+	"pop" : 177,
+	"state" : "MA"
+}
+{
+	"_id" : "01013",
+	"city" : "CHICOPEE",
+	"loc" : [
+		-72.607962,
+		42.162046
+	],
+	"pop" : 23396,
+	"state" : "MA"
+}
+{
+	"_id" : "01020",
+	"city" : "CHICOPEE",
+	"loc" : [
+		-72.576142,
+		42.176443
+	],
+	"pop" : 31495,
+	"state" : "MA"
+}
+{
+	"_id" : "01022",
+	"city" : "WESTOVER AFB",
+	"loc" : [
+		-72.558657,
+		42.196672
+	],
+	"pop" : 1764,
+	"state" : "MA"
+}
+{
+	"_id" : "01026",
+	"city" : "CUMMINGTON",
+	"loc" : [
+		-72.905767,
+		42.435296
+	],
+	"pop" : 1484,
+	"state" : "MA"
+}
+{
+	"_id" : "01027",
+	"city" : "MOUNT TOM",
+	"loc" : [
+		-72.679921,
+		42.264319
+	],
+	"pop" : 16864,
+	"state" : "MA"
+}
+{
+	"_id" : "02804",
+	"city" : "ASHAWAY",
+	"loc" : [
+		-71.783745,
+		41.423054
+	],
+	"pop" : 2472,
+	"state" : "RI"
+}
+{
+	"_id" : "02806",
+	"city" : "BARRINGTON",
+	"loc" : [
+		-71.317497,
+		41.744334
+	],
+	"pop" : 15849,
+	"state" : "RI"
+}
+{
+	"_id" : "02807",
+	"city" : "BLOCK ISLAND",
+	"loc" : [
+		-71.574825,
+		41.171546
+	],
+	"pop" : 836,
+	"state" : "RI"
+}
+{
+	"_id" : "02808",
+	"city" : "BRADFORD",
+	"loc" : [
+		-71.746453,
+		41.411448
+	],
+	"pop" : 2184,
+	"state" : "RI"
+}
+{
+	"_id" : "02809",
+	"city" : "BRISTOL",
+	"loc" : [
+		-71.267558,
+		41.68247
+	],
+	"pop" : 21625,
+	"state" : "RI"
+}
+{
+	"_id" : "02812",
+	"city" : "RICHMOND",
+	"loc" : [
+		-71.650279,
+		41.46941
+	],
+	"pop" : 1011,
+	"state" : "RI"
+}
+{
+	"_id" : "02813",
+	"city" : "CHARLESTOWN",
+	"loc" : [
+		-71.661455,
+		41.400749
+	],
+	"pop" : 6663,
+	"state" : "RI"
+}
+{
+	"_id" : "02814",
+	"city" : "CHEPACHET",
+	"loc" : [
+		-71.679483,
+		41.91549
+	],
+	"pop" : 8191,
+	"state" : "RI"
+}
+{
+	"_id" : "02815",
+	"city" : "CLAYVILLE",
+	"loc" : [
+		-71.670589,
+		41.777762
+	],
+	"pop" : 45,
+	"state" : "RI"
+}
+{
+	"_id" : "02816",
+	"city" : "COVENTRY",
+	"loc" : [
+		-71.576794,
+		41.69143
+	],
+	"pop" : 29842,
+	"state" : "RI"
+}
+{
+	"_id" : "02817",
+	"city" : "WEST GREENWICH",
+	"loc" : [
+		-71.643549,
+		41.639977
+	],
+	"pop" : 3246,
+	"state" : "RI"
+}
+{
+	"_id" : "02818",
+	"city" : "EAST GREENWICH",
+	"loc" : [
+		-71.474009,
+		41.649777
+	],
+	"pop" : 16180,
+	"state" : "RI"
+}
+Type "it" for more
+> 
+> db.cities.find().pretty()
+{
+	"_id" : "01010",
+	"city" : "BRIMFIELD",
+	"loc" : [
+		-72.188455,
+		42.116543
+	],
+	"pop" : 3706,
+	"state" : "MA"
+}
+{
+	"_id" : "01011",
+	"city" : "CHESTER",
+	"loc" : [
+		-72.988761,
+		42.279421
+	],
+	"pop" : 1688,
+	"state" : "MA"
+}
+{
+	"_id" : "01012",
+	"city" : "CHESTERFIELD",
+	"loc" : [
+		-72.833309,
+		42.38167
+	],
+	"pop" : 177,
+	"state" : "MA"
+}
+{
+	"_id" : "01013",
+	"city" : "CHICOPEE",
+	"loc" : [
+		-72.607962,
+		42.162046
+	],
+	"pop" : 23396,
+	"state" : "MA"
+}
+{
+	"_id" : "01020",
+	"city" : "CHICOPEE",
+	"loc" : [
+		-72.576142,
+		42.176443
+	],
+	"pop" : 31495,
+	"state" : "MA"
+}
+{
+	"_id" : "01022",
+	"city" : "WESTOVER AFB",
+	"loc" : [
+		-72.558657,
+		42.196672
+	],
+	"pop" : 1764,
+	"state" : "MA"
+}
+{
+	"_id" : "01026",
+	"city" : "CUMMINGTON",
+	"loc" : [
+		-72.905767,
+		42.435296
+	],
+	"pop" : 1484,
+	"state" : "MA"
+}
+{
+	"_id" : "01027",
+	"city" : "MOUNT TOM",
+	"loc" : [
+		-72.679921,
+		42.264319
+	],
+	"pop" : 16864,
+	"state" : "MA"
+}
+{
+	"_id" : "02804",
+	"city" : "ASHAWAY",
+	"loc" : [
+		-71.783745,
+		41.423054
+	],
+	"pop" : 2472,
+	"state" : "RI"
+}
+{
+	"_id" : "02806",
+	"city" : "BARRINGTON",
+	"loc" : [
+		-71.317497,
+		41.744334
+	],
+	"pop" : 15849,
+	"state" : "RI"
+}
+{
+	"_id" : "02807",
+	"city" : "BLOCK ISLAND",
+	"loc" : [
+		-71.574825,
+		41.171546
+	],
+	"pop" : 836,
+	"state" : "RI"
+}
+{
+	"_id" : "02808",
+	"city" : "BRADFORD",
+	"loc" : [
+		-71.746453,
+		41.411448
+	],
+	"pop" : 2184,
+	"state" : "RI"
+}
+{
+	"_id" : "02809",
+	"city" : "BRISTOL",
+	"loc" : [
+		-71.267558,
+		41.68247
+	],
+	"pop" : 21625,
+	"state" : "RI"
+}
+{
+	"_id" : "02812",
+	"city" : "RICHMOND",
+	"loc" : [
+		-71.650279,
+		41.46941
+	],
+	"pop" : 1011,
+	"state" : "RI"
+}
+{
+	"_id" : "02813",
+	"city" : "CHARLESTOWN",
+	"loc" : [
+		-71.661455,
+		41.400749
+	],
+	"pop" : 6663,
+	"state" : "RI"
+}
+{
+	"_id" : "02814",
+	"city" : "CHEPACHET",
+	"loc" : [
+		-71.679483,
+		41.91549
+	],
+	"pop" : 8191,
+	"state" : "RI"
+}
+{
+	"_id" : "02815",
+	"city" : "CLAYVILLE",
+	"loc" : [
+		-71.670589,
+		41.777762
+  db.cities.insert([{ "_id" : "03031", "city" : "AMHERST", "loc" : [ -71.607536, 42.856944 ], "pop" : 8998, "state" : "NH" },
+... { "_id" : "03032", "city" : "AUBURN", "loc" : [ -71.344892, 42.992529 ], "pop" : 4085, "state" : "NH" },
+... { "_id" : "03033", "city" : "BROOKLINE", "loc" : [ -71.666254, 42.738442 ], "pop" : 2410, "state" : "NH" },
+... { "_id" : "03034", "city" : "CANDIA", "loc" : [ -71.304857, 43.058514 ], "pop" : 3557, "state" : "NH" },
+... { "_id" : "03036", "city" : "CHESTER", "loc" : [ -71.244962, 42.967756 ], "pop" : 2691, "state" : "NH" },
+... { "_id" : "03037", "city" : "DEERFIELD", "loc" : [ -71.25126400000001, 43.137756 ], "pop" : 3124, "state" : "NH" },
+... { "_id" : "03038", "city" : "DERRY", "loc" : [ -71.30197099999999, 42.887404 ], "pop" : 29556, "state" : "NH" },
+... { "_id" : "03042", "city" : "EPPING", "loc" : [ -71.076367, 43.041052 ], "pop" : 6797, "state" : "NH" },
+... { "_id" : "03043", "city" : "FRANCESTOWN", "loc" : [ -71.81131000000001, 42.991952 ], "pop" : 1219, "state" : "NH" },
+... { "_id" : "03044", "city" : "FREMONT", "loc" : [ -71.121836, 42.984016 ], "pop" : 2677, "state" : "NH" },
+... { "_id" : "03045", "city" : "DUNBARTON", "loc" : [ -71.56264, 43.018224 ], "pop" : 9428, "state" : "NH" },
+... { "_id" : "03047", "city" : "GREENFIELD", "loc" : [ -71.872755, 42.949277 ], "pop" : 1422, "state" : "NH" },
+
+... { "_id" : "03048", "city" : "MASON", "loc" : [ -71.784487, 42.7489 ], "pop" : 3443, "state" : "NH" },
+... { "_id" : "03049", "city" : "HOLLIS", "loc" : [ -71.577206, 42.748513 ], "pop" : 5705, "state" : "NH" },
+... { "_id" : "03051", "city" : "HUDSON", "loc" : [ -71.412144, 42.769038 ], "pop" : 26489, "state" : "NH" },
+... { "_id" : "03053", "city" : "LONDONDERRY", "loc" : [ -71.37719, 42.865555 ], "pop" : 19687, "state" : "NH" },
+... { "_id" : "03054", "city" : "MERRIMACK", "loc" : [ -71.51278000000001, 42.866689 ], "pop" : 21632, "state" : "NH" }])
+BulkWriteResult({
+	"writeErrors" : [ ],
+	"writeConcernErrors" : [ ],
+	"nInserted" : 17,
+	"nUpserted" : 0,
+	"nMatched" : 0,
+	"nModified" : 0,
+	"nRemoved" : 0,
+	"upserted" : [ ]
+})
+> db.cities.insert([{ "_id" : "03901", "city" : "BERWICK", "loc" : [ -70.85503799999999, 43.28992 ], "pop" : 5942, "state" : "ME" },
+... { "_id" : "03902", "city" : "CAPE NEDDICK", "loc" : [ -70.639685, 43.213318 ], "pop" : 953, "state" : "ME" },
+... { "_id" : "03903", "city" : "ELIOT", "loc" : [ -70.78221600000001, 43.130943 ], "pop" : 6506, "state" : "ME" },
+... { "_id" : "03904", "city" : "KITTERY", "loc" : [ -70.742876, 43.092128 ], "pop" : 3537, "state" : "ME" },
+... { "_id" : "03905", "city" : "KITTERY POINT", "loc" : [ -70.712108, 43.097571 ], "pop" : 4589, "state" : "ME" },
+... { "_id" : "03906", "city" : "NORTH BERWICK", "loc" : [ -70.72117299999999, 43.325401 ], "pop" : 6465, "state" : "ME" },
+... { "_id" : "03907", "city" : "OGUNQUIT", "loc" : [ -70.597176, 43.228457 ], "pop" : 852, "state" : "ME" },
+... { "_id" : "03908", "city" : "SOUTH BERWICK", "loc" : [ -70.785949, 43.229201 ], "pop" : 5982, "state" : "ME" },
+... { "_id" : "03909", "city" : "YORK", "loc" : [ -70.657826, 43.154447 ], "pop" : 8477, "state" : "ME" },
+... { "_id" : "04001", "city" : "ACTON", "loc" : [ -70.93068700000001, 43.549405 ], "pop" : 767, "state" : "ME" },
+... { "_id" : "04002", "city" : "ALFRED", "loc" : [ -70.69608700000001, 43.487503 ], "pop" : 4730, "state" : "ME" },
+... { "_id" : "04003", "city" : "BAILEY ISLAND", "loc" : [ -69.995175, 43.734147 ], "pop" : 464, "state" : "ME" },
+... { "_id" : "04005", "city" : "ARUNDEL", "loc" : [ -70.47192800000001, 43.483647 ], "pop" : 23646, "state" : "ME" }])
+BulkWriteResult({
+	"writeErrors" : [ ],
+	"writeConcernErrors" : [ ],
+	"nInserted" : 13,
+	"nUpserted" : 0,
+	"nMatched" : 0,
+	"nModified" : 0,
+	"nRemoved" : 0,
+	"upserted" : [ ]
+})
+> db.cities.insert([{ "_id" : "05001", "city" : "WHITE RIVER JUNC", "loc" : [ -72.350351, 43.663431 ], "pop" : 9500, "state" : "VT" },
+... { "_id" : "05032", "city" : "BETHEL", "loc" : [ -72.652807, 43.819464 ], "pop" : 2725, "state" : "VT" },
+... { "_id" : "05033", "city" : "BRADFORD", "loc" : [ -72.140638, 44.0006 ], "pop" : 2480, "state" : "VT" },
+... { "_id" : "05034", "city" : "BRIDGEWATER", "loc" : [ -72.646704, 43.580428 ], "pop" : 130, "state" : "VT" },
+
+... { "_id" : "05035", "city" : "BRIDGEWATER CORN", "loc" : [ -72.68221200000001, 43.602147 ], "pop" : 662, "state" : "VT" },
+... { "_id" : "05036", "city" : "BROOKFIELD", "loc" : [ -72.595259, 44.032083 ], "pop" : 453, "state" : "VT" },
+... { "_id" : "05037", "city" : "BROWNSVILLE", "loc" : [ -72.494405, 43.464584 ], "pop" : 415, "state" : "VT" },
+
+... { "_id" : "05038", "city" : "CHELSEA", "loc" : [ -72.479303, 44.003931 ], "pop" : 1022, "state" : "VT" },
+... { "_id" : "05039", "city" : "CORINTH", "loc" : [ -72.282241, 44.032533 ], "pop" : 1035, "state" : "VT" },
+... { "_id" : "05040", "city" : "EAST CORINTH", "loc" : [ -72.215144, 44.061851 ], "pop" : 279, "state" : "VT" },
+... { "_id" : "05041", "city" : "EAST RANDOLPH", "loc" : [ -72.54874599999999, 43.955297 ], "pop" : 322, "state" : "VT" },
+... { "_id" : "05042", "city" : "RYEGATE", "loc" : [ -72.072669, 44.193453 ], "pop" : 328, "state" : "VT" },
+... { "_id" : "05043", "city" : "EAST THETFORD", "loc" : [ -72.19668, 43.825757 ], "pop" : 657, "state" : "VT" },
+... { "_id" : "05045", "city" : "FAIRLEE", "loc" : [ -72.190214, 43.90105 ], "pop" : 1631, "state" : "VT" },
+... { "_id" : "05046", "city" : "GROTON", "loc" : [ -72.21754799999999, 44.220435 ], "pop" : 862, "state" : "VT" }])
+BulkWriteResult({
+	"writeErrors" : [ ],
+	"writeConcernErrors" : [ ],
+	"nInserted" : 15,
+	"nUpserted" : 0,
+	"nMatched" : 0,
+	"nModified" : 0,
+	"nRemoved" : 0,
+	"upserted" : [ ]
+})
+> db.cities.find().pretty()
+{
+	"_id" : "01010",
+	"city" : "BRIMFIELD",
+	"loc" : [
+		-72.188455,
+		42.116543
+	],
+	"pop" : 3706,
+	"state" : "MA"
+}
+{
+	"_id" : "01011",
+	"city" : "CHESTER",
+	"loc" : [
+		-72.988761,
+		42.279421
+	],
+	"pop" : 1688,
+	"state" : "MA"
+}
+{
+	"_id" : "01012",
+	"city" : "CHESTERFIELD",
+	"loc" : [
+		-72.833309,
+		42.38167
+	],
+	"pop" : 177,
+	"state" : "MA"
+}
+{
+	"_id" : "01013",
+	"city" : "CHICOPEE",
+	"loc" : [
+		-72.607962,
+		42.162046
+	],
+	"pop" : 23396,
+	"state" : "MA"
+}
+{
+	"_id" : "01020",
+	"city" : "CHICOPEE",
+	"loc" : [
+		-72.576142,
+		42.176443
+	],
+	"pop" : 31495,
+	"state" : "MA"
+}
+{
+	"_id" : "01022",
+	"city" : "WESTOVER AFB",
+	"loc" : [
+		-72.558657,
+		42.196672
+	],
+	"pop" : 1764,
+	"state" : "MA"
+}
+{
+	"_id" : "01026",
+	"city" : "CUMMINGTON",
+	"loc" : [
+		-72.905767,
+		42.435296
+	],
+	"pop" : 1484,
+	"state" : "MA"
+}
+{
+	"_id" : "01027",
+	"city" : "MOUNT TOM",
+	"loc" : [
+		-72.679921,
+		42.264319
+	],
+	"pop" : 16864,
+	"state" : "MA"
+}
+{
+	"_id" : "02804",
+	"city" : "ASHAWAY",
+	"loc" : [
+		-71.783745,
+		41.423054
+	],
+	"pop" : 2472,
+	"state" : "RI"
+}
+{
+	"_id" : "02806",
+	"city" : "BARRINGTON",
+	"loc" : [
+		-71.317497,
+		41.744334
+	],
+	"pop" : 15849,
+	"state" : "RI"
+}
+{
+	"_id" : "02807",
+	"city" : "BLOCK ISLAND",
+	"loc" : [
+		-71.574825,
+		41.171546
+	],
+	"pop" : 836,
+	"state" : "RI"
+}
+{
+	"_id" : "02808",
+	"city" : "BRADFORD",
+	"loc" : [
+		-71.746453,
+		41.411448
+	],
+	"pop" : 2184,
+	"state" : "RI"
+}
+{
+	"_id" : "02809",
+	"city" : "BRISTOL",
+	"loc" : [
+		-71.267558,
+		41.68247
+	],
+	"pop" : 21625,
+	"state" : "RI"
+}
+{
+	"_id" : "02812",
+	"city" : "RICHMOND",
+	"loc" : [
+		-71.650279,
+		41.46941
+	],
+	"pop" : 1011,
+	"state" : "RI"
+}
+{
+	"_id" : "02813",
+	"city" : "CHARLESTOWN",
+	"loc" : [
+		-71.661455,
+		41.400749
+	],
+	"pop" : 6663,
+	"state" : "RI"
+}
+{
+	"_id" : "02814",
+	"city" : "CHEPACHET",
+	"loc" : [
+		-71.679483,
+		41.91549
+	],
+	"pop" : 8191,
+	"state" : "RI"
+}
+{
+	"_id" : "02815",
+	"city" : "CLAYVILLE",
+	"loc" : [
+		-71.670589,
+		41.777762
+	],
+	"pop" : 45,
+	"state" : "RI"
+}
+{
+	"_id" : "02816",
+	"city" : "COVENTRY",
+	"loc" : [
+		-71.576794,
+		41.69143
+	],
+	"pop" : 29842,
+	"state" : "RI"
+}
+{
+	"_id" : "02817",
+	"city" : "WEST GREENWICH",
+	"loc" : [
+		-71.643549,
+		41.639977
+	],
+	"pop" : 3246,
+	"state" : "RI"
+}
+{
+	"_id" : "02818",
+	"city" : "EAST GREENWICH",
+	"loc" : [
+		-71.474009,
+		41.649777
+	],
+	"pop" : 16180,
+	"state" : "RI"
+}
+Type "it" for more
+> it
+{
+	"_id" : "02822",
+	"city" : "EXETER",
+	"loc" : [
+		-71.607626,
+		41.574031
+	],
+	"pop" : 3774,
+	"state" : "RI"
+}
+{
+	"_id" : "02825",
+	"city" : "FOSTER",
+	"loc" : [
+		-71.718748,
+		41.781455
+	],
+	"pop" : 5175,
+	"state" : "RI"
+}
+{
+	"_id" : "02827",
+	"city" : "GREENE",
+	"loc" : [
+		-71.735607,
+		41.706151
+	],
+	"pop" : 1241,
+	"state" : "RI"
+}
+{
+	"_id" : "02828",
+	"city" : "GREENVILLE",
+	"loc" : [
+		-71.556923,
+		41.873409
+	],
+	"pop" : 6945,
+	"state" : "RI"
+}
+{
+	"_id" : "02830",
+	"city" : "HARRISVILLE",
+	"loc" : [
+		-71.653405,
+		41.976379
+	],
+	"pop" : 6384,
+	"state" : "RI"
+}
+{
+	"_id" : "03031",
+	"city" : "AMHERST",
+	"loc" : [
+		-71.607536,
+		42.856944
+	],
+	"pop" : 8998,
+	"state" : "NH"
+}
+{
+	"_id" : "03032",
+	"city" : "AUBURN",
+	"loc" : [
+		-71.344892,
+		42.992529
+	],
+	"pop" : 4085,
+	"state" : "NH"
+}
+{
+	"_id" : "03033",
+	"city" : "BROOKLINE",
+	"loc" : [
+		-71.666254,
+		42.738442
+	],
+	"pop" : 2410,
+	"state" : "NH"
+}
+{
+	"_id" : "03034",
+	"city" : "CANDIA",
+	"loc" : [
+		-71.304857,
+		43.058514
+	],
+	"pop" : 3557,
+	"state" : "NH"
+}
+{
+	"_id" : "03036",
+	"city" : "CHESTER",
+	"loc" : [
+		-71.244962,
+		42.967756
+	],
+	"pop" : 2691,
+	"state" : "NH"
+}
+{
+	"_id" : "03037",
+	"city" : "DEERFIELD",
+	"loc" : [
+		-71.251264,
+		43.137756
+	],
+	"pop" : 3124,
+	"state" : "NH"
+}
+{
+	"_id" : "03038",
+	"city" : "DERRY",
+	"loc" : [
+		-71.301971,
+		42.887404
+	],
+	"pop" : 29556,
+	"state" : "NH"
+}
+{
+	"_id" : "03042",
+	"city" : "EPPING",
+	"loc" : [
+		-71.076367,
+		43.041052
+	],
+	"pop" : 6797,
+	"state" : "NH"
+}
+{
+	"_id" : "03043",
+	"city" : "FRANCESTOWN",
+	"loc" : [
+		-71.81131,
+		42.991952
+	],
+	"pop" : 1219,
+	"state" : "NH"
+}
+{
+	"_id" : "03044",
+	"city" : "FREMONT",
+	"loc" : [
+		-71.121836,
+		42.984016
+	],
+	"pop" : 2677,
+	"state" : "NH"
+}
+{
+	"_id" : "03045",
+	"city" : "DUNBARTON",
+	"loc" : [
+		-71.56264,
+		43.018224
+	],
+	"pop" : 9428,
+	"state" : "NH"
+}
+{
+	"_id" : "03047",
+	"city" : "GREENFIELD",
+	"loc" : [
+		-71.872755,
+		42.949277
+	],
+	"pop" : 1422,
+	"state" : "NH"
+}
+{
+	"_id" : "03048",
+	"city" : "MASON",
+	"loc" : [
+		-71.784487,
+		42.7489
+	],
+	"pop" : 3443,
+	"state" : "NH"
+}
+{
+	"_id" : "03049",
+	"city" : "HOLLIS",
+	"loc" : [
+		-71.577206,
+		42.748513
+	],
+	"pop" : 5705,
+	"state" : "NH"
+}
+{
+	"_id" : "03051",
+	"city" : "HUDSON",
+	"loc" : [
+		-71.412144,
+		42.769038
+	],
+	"pop" : 26489,
+	"state" : "NH"
+}
+Type "it" for more
+> it
+{
+	"_id" : "03053",
+	"city" : "LONDONDERRY",
+	"loc" : [
+		-71.37719,
+		42.865555
+	],
+	"pop" : 19687,
+	"state" : "NH"
+}
+{
+	"_id" : "03054",
+	"city" : "MERRIMACK",
+	"loc" : [
+		-71.51278,
+		42.866689
+	],
+	"pop" : 21632,
+	"state" : "NH"
+}
+{
+	"_id" : "03901",
+	"city" : "BERWICK",
+	"loc" : [
+		-70.855038,
+		43.28992
+	],
+	"pop" : 5942,
+	"state" : "ME"
+}
+{
+	"_id" : "03902",
+	"city" : "CAPE NEDDICK",
+	"loc" : [
+		-70.639685,
+		43.213318
+	],
+	"pop" : 953,
+	"state" : "ME"
+}
+{
+	"_id" : "03903",
+	"city" : "ELIOT",
+	"loc" : [
+		-70.782216,
+		43.130943
+	],
+	"pop" : 6506,
+	"state" : "ME"
+}
+{
+	"_id" : "03904",
+	"city" : "KITTERY",
+	"loc" : [
+		-70.742876,
+		43.092128
+	],
+	"pop" : 3537,
+	"state" : "ME"
+}
+{
+	"_id" : "03905",
+	"city" : "KITTERY POINT",
+	"loc" : [
+		-70.712108,
+		43.097571
+	],
+	"pop" : 4589,
+	"state" : "ME"
+}
+{
+	"_id" : "03906",
+	"city" : "NORTH BERWICK",
+	"loc" : [
+		-70.721173,
+		43.325401
+	],
+	"pop" : 6465,
+	"state" : "ME"
+}
+{
+	"_id" : "03907",
+	"city" : "OGUNQUIT",
+	"loc" : [
+		-70.597176,
+		43.228457
+	],
+	"pop" : 852,
+	"state" : "ME"
+}
+{
+	"_id" : "03908",
+	"city" : "SOUTH BERWICK",
+	"loc" : [
+		-70.785949,
+		43.229201
+	],
+	"pop" : 5982,
+	"state" : "ME"
+}
+{
+	"_id" : "03909",
+	"city" : "YORK",
+	"loc" : [
+		-70.657826,
+		43.154447
+	],
+	"pop" : 8477,
+	"state" : "ME"
+}
+{
+	"_id" : "04001",
+	"city" : "ACTON",
+	"loc" : [
+		-70.930687,
+		43.549405
+	],
+	"pop" : 767,
+	"state" : "ME"
+}
+{
+	"_id" : "04002",
+	"city" : "ALFRED",
+	"loc" : [
+		-70.696087,
+		43.487503
+	],
+	"pop" : 4730,
+	"state" : "ME"
+}
+{
+	"_id" : "04003",
+	"city" : "BAILEY ISLAND",
+	"loc" : [
+		-69.995175,
+		43.734147
+	],
+	"pop" : 464,
+	"state" : "ME"
+}
+{
+	"_id" : "04005",
+	"city" : "ARUNDEL",
+	"loc" : [
+		-70.471928,
+		43.483647
+	],
+	"pop" : 23646,
+	"state" : "ME"
+}
+{
+	"_id" : "05001",
+	"city" : "WHITE RIVER JUNC",
+	"loc" : [
+		-72.350351,
+		43.663431
+	],
+	"pop" : 9500,
+	"state" : "VT"
+}
+{
+	"_id" : "05032",
+	"city" : "BETHEL",
+	"loc" : [
+		-72.652807,
+		43.819464
+	],
+	"pop" : 2725,
+	"state" : "VT"
+}
+{
+	"_id" : "05033",
+	"city" : "BRADFORD",
+	"loc" : [
+		-72.140638,
+		44.0006
+	],
+	"pop" : 2480,
+	"state" : "VT"
+}
+{
+	"_id" : "05034",
+	"city" : "BRIDGEWATER",
+	"loc" : [
+		-72.646704,
+		43.580428
+	],
+	"pop" : 130,
+	"state" : "VT"
+}
+{
+	"_id" : "05035",
+	"city" : "BRIDGEWATER CORN",
+	"loc" : [
+		-72.682212,
+		43.602147
+	],
+	"pop" : 662,
+	"state" : "VT"
+}
+Type "it" for more
+> it
+{
+	"_id" : "05036",
+	"city" : "BROOKFIELD",
+	"loc" : [
+		-72.595259,
+		44.032083
+	],
+	"pop" : 453,
+	"state" : "VT"
+}
+{
+	"_id" : "05037",
+	"city" : "BROWNSVILLE",
+	"loc" : [
+		-72.494405,
+		43.464584
+	],
+	"pop" : 415,
+	"state" : "VT"
+}
+{
+	"_id" : "05038",
+	"city" : "CHELSEA",
+	"loc" : [
+		-72.479303,
+		44.003931
+	],
+	"pop" : 1022,
+	"state" : "VT"
+}
+{
+	"_id" : "05039",
+	"city" : "CORINTH",
+	"loc" : [
+		-72.282241,
+		44.032533
+	],
+	"pop" : 1035,
+	"state" : "VT"
+}
+{
+	"_id" : "05040",
+	"city" : "EAST CORINTH",
+	"loc" : [
+		-72.215144,
+		44.061851
+	],
+	"pop" : 279,
+	"state" : "VT"
+}
+{
+	"_id" : "05041",
+	"city" : "EAST RANDOLPH",
+	"loc" : [
+		-72.548746,
+		43.955297
+	],
+	"pop" : 322,
+	"state" : "VT"
+}
+{
+	"_id" : "05042",
+	"city" : "RYEGATE",
+	"loc" : [
+		-72.072669,
+		44.193453
+	],
+	"pop" : 328,
+	"state" : "VT"
+}
+{
+	"_id" : "05043",
+	"city" : "EAST THETFORD",
+	"loc" : [
+		-72.19668,
+		43.825757
+	],
+	"pop" : 657,
+	"state" : "VT"
+}
+{
+	"_id" : "05045",
+	"city" : "FAIRLEE",
+	"loc" : [
+		-72.190214,
+		43.90105
+	],
+	"pop" : 1631,
+	"state" : "VT"
+}
+{
+	"_id" : "05046",
+	"city" : "GROTON",
+	"loc" : [
+		-72.217548,
+		44.220435
+	],
+	"pop" : 862,
+	"state" : "VT"
+}
+> db.cities.insert([{ "_id" : "06002", "city" : "BLOOMFIELD", "loc" : [ -72.72493, 41.831647 ], "pop" : 19524, "state" : "CT" },
+... { "_id" : "06010", "city" : "BRISTOL", "loc" : [ -72.930193, 41.682293 ], "pop" : 60670, "state" : "CT" },
+... { "_id" : "06013", "city" : "BURLINGTON", "loc" : [ -72.94438599999999, 41.757296 ], "pop" : 7017, "state" : "CT" },
+... { "_id" : "06016", "city" : "WINDSORVILLE", "loc" : [ -72.543667, 41.911405 ], "pop" : 5067, "state" : "CT" },
+... { "_id" : "06018", "city" : "CANAAN", "loc" : [ -73.323177, 42.024821 ], "pop" : 2948, "state" : "CT" },
+... { "_id" : "06019", "city" : "CANTON", "loc" : [ -72.898731, 41.838401 ], "pop" : 4125, "state" : "CT" },
+... { "_id" : "06020", "city" : "CANTON CENTER", "loc" : [ -72.90584699999999, 41.871586 ], "pop" : 192, "state" : "CT" },
+... { "_id" : "06021", "city" : "COLEBROOK", "loc" : [ -73.104069, 42.028217 ], "pop" : 203, "state" : "CT" },
+... { "_id" : "06022", "city" : "COLLINSVILLE", "loc" : [ -72.92827, 41.851319 ], "pop" : 4630, "state" : "CT" },
+... { "_id" : "06023", "city" : "EAST BERLIN", "loc" : [ -72.719007, 41.61277 ], "pop" : 1021, "state" : "CT" },
+
+... { "_id" : "06024", "city" : "EAST CANAAN", "loc" : [ -73.278462, 42.011686 ], "pop" : 519, "state" : "CT" },
+
+... { "_id" : "06026", "city" : "EAST GRANBY", "loc" : [ -72.74588900000001, 41.932215 ], "pop" : 4301, "state" : "CT" },
+... { "_id" : "06027", "city" : "EAST HARTLAND", "loc" : [ -72.92421299999999, 42.001617 ], "pop" : 1833, "state" : "CT" },
+... { "_id" : "06029", "city" : "ELLINGTON", "loc" : [ -72.462599, 41.911417 ], "pop" : 9070, "state" : "CT" },
+... { "_id" : "06031", "city" : "FALLS VILLAGE", "loc" : [ -73.351659, 41.95784 ], "pop" : 1192, "state" : "CT" }
+... { "_id" : "06032", "city" : "FARMINGTON", "loc" : [ -72.841476, 41.72839 ], "pop" : 14953, "state" : "CT" }
+... { "_id" : "06033", "city" : "GLASTONBURY", "loc" : [ -72.572705, 41.707329 ], "pop" : 24287, "state" : "CT" }
+... { "_id" : "06035", "city" : "GRANBY", "loc" : [ -72.79937700000001, 41.960227 ], "pop" : 6939, "state" : "CT" }
+... { "_id" : "06037", "city" : "BERLIN", "loc" : [ -72.770482, 41.620826 ], "pop" : 15755, "state" : "CT" }
+... { "_id" : "06039", "city" : "LAKEVILLE", "loc" : [ -73.43765999999999, 41.951631 ], "pop" : 2086, "state" : "CT" }])
+2017-08-28T19:02:44.364+0530 E QUERY    SyntaxError: Unexpected token {
+> db.cities.insert([{ "_id" : "06010", "city" : "BRISTOL", "loc" : [ -72.930193, 41.682293 ], "pop" : 60670, "state" : "CT" },
+... { "_id" : "06013", "city" : "BURLINGTON", "loc" : [ -72.94438599999999, 41.757296 ], "pop" : 7017, "state" : "CT" },
+... { "_id" : "06016", "city" : "WINDSORVILLE", "loc" : [ -72.543667, 41.911405 ], "pop" : 5067, "state" : "CT" },
+... { "_id" : "06018", "city" : "CANAAN", "loc" : [ -73.323177, 42.024821 ], "pop" : 2948, "state" : "CT" },
+... { "_id" : "06019", "city" : "CANTON", "loc" : [ -72.898731, 41.838401 ], "pop" : 4125, "state" : "CT" },
+... { "_id" : "06020", "city" : "CANTON CENTER", "loc" : [ -72.90584699999999, 41.871586 ], "pop" : 192, "state" : "CT" },
+... { "_id" : "06021", "city" : "COLEBROOK", "loc" : [ -73.104069, 42.028217 ], "pop" : 203, "state" : "CT" },
+... { "_id" : "06022", "city" : "COLLINSVILLE", "loc" : [ -72.92827, 41.851319 ], "pop" : 4630, "state" : "CT" },
+... { "_id" : "06023", "city" : "EAST BERLIN", "loc" : [ -72.719007, 41.61277 ], "pop" : 1021, "state" : "CT" },
+
+... { "_id" : "06024", "city" : "EAST CANAAN", "loc" : [ -73.278462, 42.011686 ], "pop" : 519, "state" : "CT" },
+
+... { "_id" : "06026", "city" : "EAST GRANBY", "loc" : [ -72.74588900000001, 41.932215 ], "pop" : 4301, "state" : "CT" },
+... { "_id" : "06027", "city" : "EAST HARTLAND", "loc" : [ -72.92421299999999, 42.001617 ], "pop" : 1833, "state" : "CT" },
+... { "_id" : "06029", "city" : "ELLINGTON", "loc" : [ -72.462599, 41.911417 ], "pop" : 9070, "state" : "CT" },
+... { "_id" : "06031", "city" : "FALLS VILLAGE", "loc" : [ -73.351659, 41.95784 ], "pop" : 1192, "state" : "CT" }
+... { "_id" : "06032", "city" : "FARMINGTON", "loc" : [ -72.841476, 41.72839 ], "pop" : 14953, "state" : "CT" }
+... { "_id" : "06033", "city" : "GLASTONBURY", "loc" : [ -72.572705, 41.707329 ], "pop" : 24287, "state" : "CT" }
+... { "_id" : "06035", "city" : "GRANBY", "loc" : [ -72.79937700000001, 41.960227 ], "pop" : 6939, "state" : "CT" }
+... { "_id" : "06037", "city" : "BERLIN", "loc" : [ -72.770482, 41.620826 ], "pop" : 15755, "state" : "CT" }
+... { "_id" : "06039", "city" : "LAKEVILLE", "loc" : [ -73.43765999999999, 41.951631 ], "pop" : 2086, "state" : "CT" }])
+2017-08-28T19:04:21.208+0530 E QUERY    SyntaxError: Unexpected token {
+> db.cities.insert([{ "_id" : "06010", "city" : "BRISTOL", "loc" : [ -72.930193, 41.682293 ], "pop" : 60670, "state" : "CT" }, { "_id" : "06013", "city" : "BURLINGTON", "loc" : [ -72.94438599999999, 41.757296 ], "pop" : 7017, "state" : "CT" }, { "_id" : "06016", "city" : "WINDSORVILLE", "loc" : [ -72.543667, 41.911405 ], "pop" : 5067, "state" : "CT" }, { "_id" : "06018", "city" : "CANAAN", "loc" : [ -73.323177, 42.024821 ], "pop" : 2948, "state" : "CT" }, { "_id" : "06019", "city" : "CANTON", "loc" : [ -72.898731, 41.838401 ], "pop" : 4125, "state" : "CT" }, { "_id" : "06020", "city" : "CANTON CENTER", "loc" : [ -72.90584699999999, 41.871586 ], "pop" : 192, "state" : "CT" }, { "_id" : "06021", "city" : "COLEBROOK", "loc" : [ -73.104069, 42.028217 ], "pop" : 203, "state" : "CT" }, { "_id" : "06022", "city" : "COLLINSVILLE", "loc" : [ -72.92827, 41.851319 ], "pop" : 4630, "state" : "CT" }, { "_id" : "06023", "city" : "EAST BERLIN", "loc" : [ -72.719007, 41.61277 ], "pop" : 1021, "state" : "CT" }, { "_id" : "06024", "city" : "EAST CANAAN", "loc" : [ -73.278462, 42.011686 ], "pop" : 519, "state" : "CT" }, { "_id" : "06026", "city" : "EAST GRANBY", "loc" : [ -72.74588900000001, 41.932215 ], "pop" : 4301, "state" : "CT" }, { "_id" : "06027", "city" : "EAST HARTLAND", "loc" : [ -72.92421299999999, 42.001617 ], "pop" : 1833, "state" : "CT" }, { "_id" : "06029", "city" : "ELLINGTON", "loc" : [ -72.462599, 41.911417 ], "pop" : 9070, "state" : "CT" }, { "_id" : "06031", "city" : "FALLS VILLAGE", "loc" : [ -73.351659, 41.95784 ], "pop" : 1192, "state" : "CT" } { "_id" : "06032", "city" : "FARMINGTON", "loc" : [ -72.841476, 41.72839 ], "pop" : 14953, "state" : "CT" } { "_id" : "06033", "city" : "GLASTONBURY", "loc" : [ -72.572705, 41.707329 ], "pop" : 24287, "state" : "CT" } { "_id" : "06035", "city" : "GRANBY", "loc" : [ -72.79937700000001, 41.960227 ], "pop" : 6939, "state" : "CT" } { "_id" : "06037", "city" : "BERLIN", "loc" : [ -72.770482, 41.620826 ], "pop" : 15755, "state" : "CT" } { "_id" : "06039", "city" : "LAKEVILLE", "loc" : [ -73.43765999999999, 41.951631 ], "pop" : 2086, "state" : "CT" }])
+2017-08-28T19:05:15.095+0530 E QUERY    SyntaxError: Unexpected token {
+> 
+
+
+1
+
+> db.cities.update({'city':'CHESTER'},{$set:{'city':'PUNE'}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.cities.find().pretty()
+{
+	"_id" : "01010",
+	"city" : "BRIMFIELD",
+	"loc" : [
+		-72.188455,
+		42.116543
+	],
+	"pop" : 3706,
+	"state" : "MA"
+}
+{
+	"_id" : "01011",
+	"city" : "PUNE",
+	"loc" : [
+		-72.988761,
+		42.279421
+	],
+	"pop" : 1688,
+	"state" : "MA"
+}
+{
+	"_id" : "01012",
+	"city" : "CHESTERFIELD",
+	"loc" : [
+		-72.833309,
+		42.38167
+	],
+	"pop" : 177,
+	"state" : "MA"
+}
+{
+	"_id" : "01013",
+	"city" : "CHICOPEE",
+	"loc" : [
+		-72.607962,
+		42.162046
+	],
+	"pop" : 23396,
+	"state" : "MA"
+}
+{
+	"_id" : "01020",
+	"city" : "CHICOPEE",
+	"loc" : [
+		-72.576142,
+		42.176443
+	],
+	"pop" : 31495,
+	"state" : "MA"
+}
+{
+	"_id" : "01022",
+	"city" : "WESTOVER AFB",
+	"loc" : [
+		-72.558657,
+		42.196672
+	],
+	"pop" : 1764,
+	"state" : "MA"
+}
+{
+	"_id" : "01026",
+	"city" : "CUMMINGTON",
+	"loc" : [
+		-72.905767,
+		42.435296
+	],
+	"pop" : 1484,
+	"state" : "MA"
+}
+{
+	"_id" : "01027",
+	"city" : "MOUNT TOM",
+	"loc" : [
+		-72.679921,
+		42.264319
+	],
+	"pop" : 16864,
+	"state" : "MA"
+}
+{
+	"_id" : "02804",
+	"city" : "ASHAWAY",
+	"loc" : [
+		-71.783745,
+		41.423054
+	],
+	"pop" : 2472,
+	"state" : "RI"
+}
+{
+	"_id" : "02806",
+	"city" : "BARRINGTON",
+	"loc" : [
+		-71.317497,
+		41.744334
+	],
+	"pop" : 15849,
+	"state" : "RI"
+}
+{
+	"_id" : "02807",
+	"city" : "BLOCK ISLAND",
+	"loc" : [
+		-71.574825,
+		41.171546
+	],
+	"pop" : 836,
+	"state" : "RI"
+}
+{
+	"_id" : "02808",
+	"city" : "BRADFORD",
+	"loc" : [
+		-71.746453,
+		41.411448
+	],
+	"pop" : 2184,
+	"state" : "RI"
+}
+{
+	"_id" : "02809",
+	"city" : "BRISTOL",
+	"loc" : [
+		-71.267558,
+		41.68247
+	],
+	"pop" : 21625,
+	"state" : "RI"
+}
+{
+	"_id" : "02812",
+	"city" : "RICHMOND",
+	"loc" : [
+		-71.650279,
+		41.46941
+	],
+	"pop" : 1011,
+	"state" : "RI"
+}
+{
+	"_id" : "02813",
+	"city" : "CHARLESTOWN",
+	"loc" : [
+		-71.661455,
+		41.400749
+	],
+	"pop" : 6663,
+	"state" : "RI"
+}
+{
+	"_id" : "02814",
+	"city" : "CHEPACHET",
+	"loc" : [
+		-71.679483,
+		41.91549
+	],
+	"pop" : 8191,
+	"state" : "RI"
+}
+{
+	"_id" : "02815",
+	"city" : "CLAYVILLE",
+	"loc" : [
+		-71.670589,
+		41.777762
+	],
+	"pop" : 45,
+	"state" : "RI"
+}
+{
+	"_id" : "02816",
+	"city" : "COVENTRY",
+	"loc" : [
+		-71.576794,
+		41.69143
+	],
+	"pop" : 29842,
+	"state" : "RI"
+}
+{
+	"_id" : "02817",
+	"city" : "WEST GREENWICH",
+	"loc" : [
+		-71.643549,
+		41.639977
+	],
+	"pop" : 3246,
+	"state" : "RI"
+}
+{
+	"_id" : "02818",
+	"city" : "EAST GREENWICH",
+	"loc" : [
+		-71.474009,
+		41.649777
+	],
+	"pop" : 16180,
+	"state" : "RI"
+}
+Type "it" for more
+> 
+
+7
+
+> db.cities.find({pop:{$gt:4000}}).pretty()
+{
+	"_id" : "01013",
+	"city" : "CHICOPEE",
+	"loc" : [
+		-72.607962,
+		42.162046
+	],
+	"pop" : 23396,
+	"state" : "MA"
+}
+{
+	"_id" : "01020",
+	"city" : "CHICOPEE",
+	"loc" : [
+		-72.576142,
+		42.176443
+	],
+	"pop" : 31495,
+	"state" : "MA"
+}
+{
+	"_id" : "01027",
+	"city" : "MOUNT TOM",
+	"loc" : [
+		-72.679921,
+		42.264319
+	],
+	"pop" : 16864,
+	"state" : "MA"
+}
+{
+	"_id" : "02806",
+	"city" : "BARRINGTON",
+	"loc" : [
+		-71.317497,
+		41.744334
+	],
+	"pop" : 15849,
+	"state" : "RI"
+}
+{
+	"_id" : "02809",
+	"city" : "BRISTOL",
+	"loc" : [
+		-71.267558,
+		41.68247
+	],
+	"pop" : 21625,
+	"state" : "RI"
+}
+{
+	"_id" : "02813",
+	"city" : "CHARLESTOWN",
+	"loc" : [
+		-71.661455,
+		41.400749
+	],
+	"pop" : 6663,
+	"state" : "RI"
+}
+{
+	"_id" : "02814",
+	"city" : "CHEPACHET",
+	"loc" : [
+		-71.679483,
+		41.91549
+	],
+	"pop" : 8191,
+	"state" : "RI"
+}
+{
+	"_id" : "02816",
+	"city" : "COVENTRY",
+	"loc" : [
+		-71.576794,
+		41.69143
+	],
+	"pop" : 29842,
+	"state" : "RI"
+}
+{
+	"_id" : "02818",
+	"city" : "EAST GREENWICH",
+	"loc" : [
+		-71.474009,
+		41.649777
+	],
+	"pop" : 16180,
+	"state" : "RI"
+}
+{
+	"_id" : "02825",
+	"city" : "FOSTER",
+	"loc" : [
+		-71.718748,
+		41.781455
+	],
+	"pop" : 5175,
+	"state" : "RI"
+}
+{
+	"_id" : "02828",
+	"city" : "GREENVILLE",
+	"loc" : [
+		-71.556923,
+		41.873409
+	],
+	"pop" : 6945,
+	"state" : "RI"
+}
+{
+	"_id" : "02830",
+	"city" : "HARRISVILLE",
+	"loc" : [
+		-71.653405,
+		41.976379
+	],
+	"pop" : 6384,
+	"state" : "RI"
+}
+{
+	"_id" : "03031",
+	"city" : "AMHERST",
+	"loc" : [
+		-71.607536,
+		42.856944
+	],
+	"pop" : 8998,
+	"state" : "NH"
+}
+{
+	"_id" : "03032",
+	"city" : "AUBURN",
+	"loc" : [
+		-71.344892,
+		42.992529
+	],
+	"pop" : 4085,
+	"state" : "NH"
+}
+{
+	"_id" : "03038",
+	"city" : "DERRY",
+	"loc" : [
+		-71.301971,
+		42.887404
+	],
+	"pop" : 29556,
+	"state" : "NH"
+}
+{
+	"_id" : "03042",
+	"city" : "EPPING",
+	"loc" : [
+		-71.076367,
+		43.041052
+	],
+	"pop" : 6797,
+	"state" : "NH"
+}
+{
+	"_id" : "03045",
+	"city" : "DUNBARTON",
+	"loc" : [
+		-71.56264,
+		43.018224
+	],
+	"pop" : 9428,
+	"state" : "NH"
+}
+{
+	"_id" : "03049",
+	"city" : "HOLLIS",
+	"loc" : [
+		-71.577206,
+		42.748513
+	],
+	"pop" : 5705,
+	"state" : "NH"
+}
+{
+	"_id" : "03051",
+	"city" : "HUDSON",
+	"loc" : [
+		-71.412144,
+		42.769038
+	],
+	"pop" : 26489,
+	"state" : "NH"
+}
+{
+	"_id" : "03053",
+	"city" : "LONDONDERRY",
+	"loc" : [
+		-71.37719,
+		42.865555
+	],
+	"pop" : 19687,
+	"state" : "NH"
+}
+Type "it" for more
+> it
+{
+	"_id" : "03054",
+	"city" : "MERRIMACK",
+	"loc" : [
+		-71.51278,
+		42.866689
+	],
+	"pop" : 21632,
+	"state" : "NH"
+}
+{
+	"_id" : "03901",
+	"city" : "BERWICK",
+	"loc" : [
+		-70.855038,
+		43.28992
+	],
+	"pop" : 5942,
+	"state" : "ME"
+}
+{
+	"_id" : "03903",
+	"city" : "ELIOT",
+	"loc" : [
+		-70.782216,
+		43.130943
+	],
+	"pop" : 6506,
+	"state" : "ME"
+}
+{
+	"_id" : "03905",
+	"city" : "KITTERY POINT",
+	"loc" : [
+		-70.712108,
+		43.097571
+	],
+	"pop" : 4589,
+	"state" : "ME"
+}
+{
+	"_id" : "03906",
+	"city" : "NORTH BERWICK",
+	"loc" : [
+		-70.721173,
+		43.325401
+	],
+	"pop" : 6465,
+	"state" : "ME"
+}
+{
+	"_id" : "03908",
+	"city" : "SOUTH BERWICK",
+	"loc" : [
+		-70.785949,
+		43.229201
+	],
+	"pop" : 5982,
+	"state" : "ME"
+}
+{
+	"_id" : "03909",
+	"city" : "YORK",
+	"loc" : [
+		-70.657826,
+		43.154447
+	],
+	"pop" : 8477,
+	"state" : "ME"
+}
+{
+	"_id" : "04002",
+	"city" : "ALFRED",
+	"loc" : [
+		-70.696087,
+		43.487503
+	],
+	"pop" : 4730,
+	"state" : "ME"
+}
+{
+	"_id" : "04005",
+	"city" : "ARUNDEL",
+	"loc" : [
+		-70.471928,
+		43.483647
+	],
+	"pop" : 23646,
+	"state" : "ME"
+}
+{
+	"_id" : "05001",
+	"city" : "WHITE RIVER JUNC",
+	"loc" : [
+		-72.350351,
+		43.663431
+	],
+	"pop" : 9500,
+	"state" : "VT"
+}
+> 
+
+8
+
+> db.cities.find({state:"MA" , pop:{$gt:20000}}).pretty()
+{
+	"_id" : "01013",
+	"city" : "CHICOPEE",
+	"loc" : [
+		-72.607962,
+		42.162046
+	],
+	"pop" : 23396,
+	"state" : "MA"
+}
+{
+	"_id" : "01020",
+	"city" : "CHICOPEE",
+	"loc" : [
+		-72.576142,
+		42.176443
+	],
+	"pop" : 31495,
+	"state" : "MA"
+}
+> 
+
